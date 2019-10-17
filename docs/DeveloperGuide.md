@@ -95,9 +95,7 @@ The Ui will reply to the User with the following messages:
 	 chicken rice
 	 ____________________________________________________________
 ```
-he Ui class consists of methods that outputs messages to the user as a response when the user enters a certain command
-
-The Ui component,
+The Ui class consists of methods that outputs messages to the user as a response when the user enters a certain command
 
 - reads and return s user input using `scanner.nextLine()`
 - outputs messages to the user as a response such as `showAddCommand`, `showRemoveCommand`, etc
@@ -149,7 +147,36 @@ API: `Task.java`
 
 API: `DukeException.java`
 
+#### 2.8 Recipebook Component
 
+The Recipebook contains 2 classes, Dishes Class and DishList Class
+
+**<u>Dishes Class</u>**
+
+| Attributes | Description |
+| ---------- | ----------- |
+|            |             |
+|            |             |
+|            |             |
+
+| Methods | Description |
+| ------- | ----------- |
+|         |             |
+|         |             |
+|         |             |
+
+
+
+#### 2.9 RecipeCommand
+
+The RecipeCommand class is used as an abstract class for other classes, its method `execute` is also declared as an abstract method that is used by the following classes
+
+- AddDishCommand
+- AddIngredient
+- DeleteDishCommand
+- InitCommand
+- ListDishCommand
+- RemindCommand
 
 ### 3. Implementation
 
