@@ -177,9 +177,8 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class. The Dishes C
 | clearOrders(): void           | clears the ingredient list                                   |
 | getDishName(): String         | returns the name of the dish                                 |
 | setRating(int): void          | takes in an `int` and sets the new overall rating of the dish |
-| getRating(): float            |                                                              |
-| addIngredients(String): void  |                                                              |
-| toString(): String            |                                                              |
+| getRating(): float            | returns the rating of that dish                              |
+| addIngredients(String): void  | takes a string and adds into ingredientlist                  |
 
 **<u>DishList Class</u>**
 
