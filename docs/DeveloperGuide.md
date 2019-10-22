@@ -151,7 +151,7 @@ API: `DukeException.java`
 
 The Recipebook contains 2 classes, Dishes Class and DishList Class. The Dishes Class 
 
-![](C:\Users\s1014\Google Drive\semester 3\dishes diagram.png)
+![Dishes](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishes%20diagram.png)
 
 **<u>Dishes Class</u>**
 
@@ -193,7 +193,6 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class. The Dishes C
 | DishList()  | initalize the empty dishLIst as a new ArrayList<> |
 
 
-
 | Methods                  | Description |
 | ------------------------ | ----------- |
 | addDishes(Dishes): void  |             |
@@ -215,8 +214,7 @@ The dishesCommand class is used as an abstract class for other classes, its meth
 - InitCommand
 - ListDishCommand
 
-![](C:\Users\s1014\Google Drive\semester 3\dishesCommand diagram.png)
-
+![DishesCommand](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishesCommand%20diagram.png)
 ### 3. Implementation
 
 
