@@ -205,9 +205,9 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class. The Dishes C
 
 
 
-#### 2.9 RecipeCommand Component
+#### 2.9 dishesCommand Component
 
-The RecipeCommand class is used as an abstract class for other classes, its method `execute` is also declared as an abstract method that is used by the following classes
+The dishesCommand class is used as an abstract class for other classes, its method `execute` is also declared as an abstract method that is used by the following classes
 
 - AddDishCommand
 - AddIngredient
