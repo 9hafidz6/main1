@@ -8,6 +8,7 @@ import duke.command.dishesCommand.*;
 import duke.command.dishesCommand.InitCommand;
 import duke.dish.Dish;
 import duke.exception.DukeException;
+import duke.command.orderCommand.*;
 import duke.ingredient.Ingredient;
 import duke.task.Deadline;
 import duke.task.DoWithinPeriodTasks;
@@ -16,7 +17,8 @@ import duke.task.Todo;
 import java.util.Date;
 
 /**
- * Represents a parser used to parse the input String from the user into a Duke understandable {@link Cmd}.
+ * Represents a parser used to parse the input String from the user into a Duke understandable Command.
+
  * It should deals with making sense of the user command.
  */
 public class Parser {
@@ -87,6 +89,7 @@ public class Parser {
     public static Cmd Parse(String fullCommand) throws DukeException {
         //splitted contains the keyword and the rest (description or task number)
         String[] splitted = fullCommand.split(" ", 2);
+        int orderNb;
         //switching on the keyword
         switch (splitted[0]) {
             //RecipeCommand
@@ -97,8 +100,8 @@ public class Parser {
             case "dishlist":
                 return new ListDishCommand();
             case "dishdelete" :
-                int Nb = Integer.parseInt(splitted[1]);
-                return new DeleteDishCommand(Nb);
+                orderNb = Integer.parseInt(splitted[1]);
+                return new DeleteDishCommand(orderNb);
             case "addingredient" :
                 String[] getIng = splitAndCheck(splitted[1], " /add ");
                 int listNum = Integer.parseInt(getIng[1]);
@@ -107,24 +110,26 @@ public class Parser {
                 return new InitCommand();
             // OrderCommand
             case "orderAdd":
-                return new AddOrder();
+                return new AddOrderCommand(new Order(), splitted[1]);
             case "orderList":
                 // splitted[1] can be orderList all, orderList undone,
-                //                    orderList today, orderList undoneToday
+                //                    orderList today, orderList undoneToday,
+                //                    orderList date xxxx/xx/xx,
+                //                    orderList dish dishname
                 checkLength(splitted);
-                return new ListOrderCmd(splitted[1]);
+                return new ListOrderCommand(splitted[1]);
             case "orderDone":
                 checkLength(splitted);
-                return new DoneOrderCmd(splitted[1]);
-            case "orderCancel":
-                return new CancelOrderCmd(splitted[1]);
+                orderNb = Integer.parseInt(splitted[1]);
+                return new DoneOrderCommand(orderNb);
+            case "orderDelete":
+                orderNb = Integer.parseInt(splitted[1]);
+                return new DeleteOrderCommand(orderNb);
             case "orderAlterDate":
                 checkLength(splitted);
                 String[] getDate = splitAndCheck(splitted[1], " /to ");
                 // getDate[0] is the order index, getDate[1] is the newly set date
-                return new AlterServingDateCmd(Integer.parseInt(getDate[0]), getDate[1]);
-            case "orderFindDate":
-                return new FindOrderByDate(splitted[1]);
+                return new AlterDateCommand(Integer.parseInt(getDate[0]), getDate[1]);
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
         }
