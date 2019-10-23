@@ -168,12 +168,12 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class. The Dishes C
 
 **<u>Dishes Class</u>**
 
-| Attributes                   | Description                                     |
-| ---------------------------- | ----------------------------------------------- |
-| dishName: String             | name of the dish                                |
-| total: int                   | the total number of orders for that dish        |
-| rating: float                | the overall rating for that dish                |
-| ingredientList: List<String> | a list of ingredients associated with that dish |
+| Attributes                       | Description                                     |
+| -------------------------------- | ----------------------------------------------- |
+| dishName: String                 | name of the dish                                |
+| total: int                       | the total number of orders for that dish        |
+| rating: float                    | the overall rating for that dish                |
+| ingredientList: `IngredientList` | a list of ingredients associated with that dish |
 
 
 
@@ -192,30 +192,18 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class. The Dishes C
 | setRating(int): void          | takes in an `int` and sets the new overall rating of the dish |
 | getRating(): float            | returns the rating of that dish                              |
 | addIngredients(String): void  | takes a string and adds into ingredientlist                  |
+| toString(): String            | it returns a String of all the ingredients that the dish contains |
 
 **<u>DishList Class</u>**
 
-| Atrributes             | Description |
-| ---------------------- | ----------- |
-| dishList: List<dishes> |             |
+this class inherits the GenericList class  which takes in a List of Dish.
 
+| Constructor          | Description |
+| -------------------- | ----------- |
+| DishList(List<Dish>) |             |
+| DishList()           |             |
 
-
-| Constructor | Description                                       |
-| ----------- | ------------------------------------------------- |
-| DishList()  | initalize the empty dishLIst as a new ArrayList<> |
-
-
-
-
-| Methods                  | Description |
-| ------------------------ | ----------- |
-| addDishes(Dishes): void  |             |
-| deleteDish(int): void    |             |
-| getDish(int): Dishes     |             |
-| getSize(): int           |             |
-| clearList(): void        |             |
-| toString(Dishes): String |             |
+//Todo: give elaboration for the use of this class 
 
 
 
@@ -224,6 +212,7 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class. The Dishes C
 The dishesCommand class is used as an abstract class for other classes, its method `execute` is also declared as an abstract method that is used by the following classes
 
 - AddDishCommand
+  - //Todo: put in a code snippet and explain how it works and why it is done this way. same goes for the other classes
 - AddIngredient
 - DeleteDishCommand
 - InitCommand
@@ -231,7 +220,7 @@ The dishesCommand class is used as an abstract class for other classes, its meth
 
 ![DishesCommand](https://github.com/AY1920S1-CS2113-T14-2/main1/blob/master/docs/images/dishesCommand diagram.png)
 
-
+//Todo: add uml diagram from intelliJ. elaborate on current classes. future plans for this component
 
 #### 2.10 Order Component
 
@@ -241,11 +230,11 @@ The Order component contains 2 classes, Order Class and Order Class. The Order C
 
 **<u>Order Class</u>**
 
-| Attributes                    | Description                                                  |
-| ----------------------------- | ------------------------------------------------------------ |
-| content: Map<Dishes, Integer> | the content of the order, specifying ordered dishes and amount |
-| isDone: boolean               | the status of the order: *true* if done, *false* otherwise   |
-| date: Date                    | the serving date of the order (not the date when the order was created) |
+| Attributes                                          | Description                                                  |
+| --------------------------------------------------- | ------------------------------------------------------------ |
+| content: Map<Dishes,                       Integer> | the content of the order, specifying ordered dishes and amount |
+| isDone: boolean                                     | the status of the order: *true* if done, *false* otherwise   |
+| date: Date                                          | the serving date of the order (not the date when the order was created) |
 
 
 
