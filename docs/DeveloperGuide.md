@@ -210,7 +210,7 @@ this class inherits the GenericList class  which takes in a List of Dish. this c
 
 #### 2.9 dishesCommand Component
 
-The dishesCommand component inherits from various other classes. 
+The dishesCommand component  enables the chef to modify the dishList which acts as a menu or recipebook. this component inherits from other classes. 
 
 - addDishCommand and addIngredient inherits from AddCommand class which inherits from the Cmd class
 - deleteDishCommand inherits from the DeleteCommand which inherits from the Cmd class
@@ -250,9 +250,7 @@ this component allows the chef to add dishes to the current menu, remove it and 
 
 <img src="C:\Users\s1014\Google Drive\semester 3\package dishes.PNG" style="zoom:80%;" />
 
-//Todo: add uml diagram from intelliJ. elaborate on current classes. future plans for this component
-
-future additions
+**<u>future additions</u>**
 
 #### 2.10 Order Component
 API: `Order.java`, `OrderList.java`
