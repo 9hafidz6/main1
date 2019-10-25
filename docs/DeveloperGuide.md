@@ -18,6 +18,7 @@
    12. Fridge Component
    13. GenericList
    14. Ingredient
+   15. Statistics
 
 3. Implementation
 
@@ -51,7 +52,7 @@
 
 #### 2.1  Architecture
 
-![architecture]( https://github.com/AY1920S1-CS2113-T14-2/main1/blob/master/docs/images/architectureV1.1.png )
+![architecture]( https://github.com/AY1920S1-CS2113-T14-2/main1/blob/master/docs/images/archh.png )
 
 `main` has 1 class called `Duke`. It is responsible for,
 
@@ -148,7 +149,7 @@ where the first column is denotes the type of task, T for todo, D for deadline, 
 
 The program can `load` or `generate` an entry from the storage and also `changeContent` and `addInFile`
 
-![Storage](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/StorageUML.png)
+![Storage](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/StorageUML1.png)
 
 #### 2.6 Task Component
 
@@ -254,16 +255,18 @@ this component allows the chef to add dishes to the current menu, remove it and 
 future additions
 
 #### 2.10 Order Component
+API: `Order.java`, `OrderList.java`
 
-The Order component contains 2 classes, Order Class and Order Class. The Order Class 
+The Order component contains 2 classes, Order Class and OrderList Class. The chef can add new orders and update his "todo list" today. When an order comes, the program calculates dishes amount for each type of dishes. It then access the recipebook which contains every dishes in the menu including the recipe (the amount of consisting ingredients) so as to get the total amount of the ingredients needed to finish this order. It checks with the storage of those ingredients in the fridge and returns the information that if ingredients are enough.
 
-// Todo: Add Order class diagram here
+Besides, in current stage, we assume that the dishes in chef's todo list should be finished by the end of "today". At the beginning of every day, the todo list will be initialized. However, the order supports pre-order, allowing the order date is not today. That is, the initialization of chef's todo list might not be empty.
+
 
 **<u>Order Class</u>**
 
 | Attributes                                          | Description                                                  |
 | --------------------------------------------------- | ------------------------------------------------------------ |
-| content: Map<Dishes,                       Integer> | the content of the order, specifying ordered dishes and amount |
+| content: Map<Dishes, Integer>                       | the content of the order, specifying ordered dishes and amount |
 | isDone: boolean                                     | the status of the order: *true* if done, *false* otherwise   |
 | date: Date                                          | the serving date of the order (not the date when the order was created) |
 
@@ -326,28 +329,29 @@ The Order component contains 2 classes, Order Class and Order Class. The Order C
 #### 
 
 #### 2.11 Order Command Component
+API: `AddOrderCommand.java`, `AlterDateCommand.java`, `DeleteOrderCommand.java`, `DoneOrderCommand.java`, `ListOrderCommand.java`
 
 The Order Command classes inherits from the `Command` class. They overwrite the abstract method `execute` of the `Command` class. The Order Command classes includes:
 
-- AddOrderCommand
-- AlterDateCommand
-- DeleteOrderCommand
-- DoneOrderCommand
-- ListOrderCommand
+- AddOrderCommand: This command will add order to the orderlist and update the chef's todo list. The order can be loaded manually by command. The order can also be read from the file when initializing -- which is the case of the pre-order.
+- AlterDateCommand: This command will change the serving date of the order. If it changed to the date of today, then chef's todo list should be updated. If it changed to the date before today, then the change is considered invalid.
+- DeleteOrderCommand: This command is used for cancelled orders. It also synchronizes with chef's todo list.
+- DoneOrderCommand: This command is used for changing the status of the order to be finished. The done dishes in the order can be removed from the chef's todo list. 
+- ListOrderCommand: The command is to list all orders or is to list orders after filtering. The filter feature can be date, dishes, order status.
 
 #### 2.12 Fridge Component
 API: `Fridge.java`
 
 The Fridge class allows access and modification of the `Ingredient`s used by the chef. By keeping track of the Ingredients' expiry date, it allows the user to know which products have expired, and remove them. It allows for less ingredient waste, as it can return the most recently expiring ingredients, so that they can be used first. 
 
-![Fridge](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/fridgeUML.png)
+![Fridge](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/fridgeUML1.png)
 
 #### 2.13 GenericList
 API: `GenericList.java`
 
 This abstract class allows for creation of different types of lists, and basic list entry manipulations. It is extended by multiple classes, including `IngredientsList.java`, `TaksList.java`, `OrderList.java` and `DishList.java`. All of these classes inherit the basic methods from the Generic List and extend it with their specific methods, eg.  `allUndoneOrders()` from`OrderList.java`, or `changeAmount()` from `IngredientsList.java`. A UML Class Diagram is shown below.
 
-![GenericList](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/GenericListUML.png)
+![GenericList](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/GenericListUML1.png)
 
 #### 2.14 Ingredient Component
 
@@ -397,6 +401,9 @@ The Recipebook contains 2 classes, Ingredient and IngredientsList.
 | changeAmount(int, String)        | Changes the amount of the ingredient using an index number |
 
 //!add commands such as FindIngredient()
+
+#### 2.15 Statistics
+
 
 #### 
 
