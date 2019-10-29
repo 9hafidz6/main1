@@ -86,10 +86,7 @@ public class Duke {
         boolean back = false;
         while (!isExit) {
             try {
-
                 ui.showOptions();
-
-
                 ui.showLine();
                 fullCommand = ui.readCommand();
                 ui.clearScreen();
@@ -158,7 +155,7 @@ public class Duke {
                         break;
                     }
                     case "d": {
-                        ui.showIngredientTask();
+                        ui.showDishTemplate();
                         fullCommand = ui.readCommand();
                         ui.clearScreen();
                         Cmd<Dish> command = Parser.parse(fullCommand, Type.DISH);
