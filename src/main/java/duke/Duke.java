@@ -67,7 +67,7 @@ public class Duke {
      * The execution core of the Duke class.
      */
 
-    public void run() {
+    public void run() throws IOException, InterruptedException {
         String fullCommand;
         ui.clearScreen();
         ui.showWelcome();
@@ -89,12 +89,11 @@ public class Duke {
 
                 ui.showOptions();
 
-                String fullCommand = ui.readCommand();
-                ui.clearScreen();
+
                 ui.showLine();
                 fullCommand = ui.readCommand();
+                ui.clearScreen();
                 ui.showLine();
-                back = false;
                 switch (fullCommand) {
                     case "options": {
                         ui.showOptions();
@@ -119,6 +118,7 @@ public class Duke {
                         while (true) {
                             try {
                                 fullCommand = ui.readCommand();
+                                ui.clearScreen();
                                 if (fullCommand.trim().equals("back")) {
                                     break;
                                 }
@@ -152,6 +152,7 @@ public class Duke {
                     case "c": {
                         ui.showIngredientTask();
                         fullCommand = ui.readCommand();
+                        ui.clearScreen();
                         Cmd<Order> command = Parser.parse(fullCommand, Type.ORDER);
                         command.execute(order, ui, orderStorage);
                         break;
@@ -159,6 +160,7 @@ public class Duke {
                     case "d": {
                         ui.showIngredientTask();
                         fullCommand = ui.readCommand();
+                        ui.clearScreen();
                         Cmd<Dish> command = Parser.parse(fullCommand, Type.DISH);
                         command.execute(dish, ui, orderStorage);
                         break;

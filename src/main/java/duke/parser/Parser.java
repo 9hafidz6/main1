@@ -101,55 +101,65 @@ public class Parser {
         //= fullCommand.split(" ", 3);
 
 
+        switch (type) {
+            case INGREDIENT: {
+                splitted = fullCommand.split(" ");
 
-            switch (type) {
-                case INGREDIENT: {
-                    splitted = fullCommand.split(" ");
-
-                     if (splitted[0].equals("add")) {
-                         if (splitted.length != 4 )
-                             throw new DukeException("must specify ingredient name, amount and/or expiry date");
-                         return new AddCommand<Ingredient>(new Ingredient(splitted[1], Integer.parseInt(splitted[2]), splitted[3]));
-                     }if (splitted[0].equals("remove")) {
-                        if(splitted.length!=2)
-                            throw new DukeException("must specify a index");
-                        return new DeleteCommand<Ingredient>(Integer.parseInt(splitted[1]));
-                    } else if (splitted[0].equals("use")) {
-                         if(splitted.length!=3)
-                             throw new DukeException("follow the template: use <ingredient name> <amount>");
-                        return new UseCommand(new Ingredient(splitted[1], Integer.parseInt(splitted[2]), new Date()));
-                    } else
-                        throw new DukeException("not a valid command for an Ingredient");
-
+                if (splitted[0].equals("add")) {
+                    if (splitted.length != 4)
+                        throw new DukeException("must specify ingredient name, amount and/or expiry date");
+                    return new AddCommand<Ingredient>(new Ingredient(splitted[1], Integer.parseInt(splitted[2]), splitted[3]));
                 }
-                case DISH: {
-                    splitted = fullCommand.split(" ", 4);
-                    if (splitted.length > 4)
-                        throw new DukeException("must specify ing name, amount and expiry date");
-                    else if (splitted[0].equals("add"))
-                        return new AddCommand<Dish>(new Dish(splitted[1]));
-                    if (splitted[0].equals("remove")) {
-                        return new DeleteCommand<Dish>(Integer.parseInt(splitted[1]));
-                    } else
-                        throw new DukeException("not a valid command for an Ingredient");
+                if (splitted[0].equals("remove")) {
+                    if (splitted.length != 2)
+                        throw new DukeException("must specify a index");
+                    return new DeleteCommand<Ingredient>(Integer.parseInt(splitted[1]));
+                } else if (splitted[0].equals("use")) {
+                    if (splitted.length != 3)
+                        throw new DukeException("follow the template: use <ingredient name> <amount>");
+                    return new UseCommand(new Ingredient(splitted[1], Integer.parseInt(splitted[2]), new Date()));
+                } else
+                    throw new DukeException("not a valid command for an Ingredient");
 
-                }
-                case ORDER: {
-                    splitted = fullCommand.split(" ", 4);
-                    if (splitted.length > 4)
-                        throw new DukeException("must specify order name, amount and expiry date");
-                    else if (splitted[0].equals("add"))
-                        return new AddCommand<Order>(new Order(splitted[1]));
-                    if (splitted[0].equals("remove")) {
-                        // for(int i=0)
-                        return new DeleteCommand<Order>(Integer.parseInt(splitted[1]));
-                    } else
-                        throw new DukeException("not a valid command for an Ingredient");
-
-                }
-                default:
-                    throw new DukeException("not a valid type");
             }
+            case DISH: {
+                splitted = fullCommand.split(" ", 2);
+                if (splitted.length > 4)
+                    throw new DukeException("must specify name/index");
+                else if (splitted[0].equals("add"))
+                    return new AddDishCommand(new Dish(splitted[1]));
+                else if (splitted[0].equals("remove"))
+                    return new DeleteDishCommand(Integer.parseInt(splitted[1]));
+                else if (splitted[0].equals("list"))
+                    return new ListDishCommand();
+                else if (splitted[0].equals("initialize"))
+                    return new InitCommand();
+                else if (splitted[0].equals("ingredient")) {
+                    String[] getIng = splitAndCheck(splitted[1], " /add ");
+                    int index = Integer.parseInt(getIng[1]);
+                   return new AddIngredient(new Ingredient(getIng[0], index, new Date()) , index);
+                }
+                else
+                    throw new DukeException("not a valid command for a Dish");
+
+            }
+            case ORDER: {
+                splitted = fullCommand.split(" ", 4);
+                if (splitted.length > 4)
+                    throw new DukeException("must specify order name, amount and expiry date");
+                else if (splitted[0].equals("add"))
+                    return new AddCommand<Order>(new Order(splitted[1]));
+                if (splitted[0].equals("remove")) {
+                    // for(int i=0)
+                    return new DeleteCommand<Order>(Integer.parseInt(splitted[1]));
+                } else
+                    throw new DukeException("not a valid command for an Ingredient");
+
+            }
+            default:
+                throw new DukeException("not a valid type");
+        }
+    }
 
 
 //     public static Cmd Parse(String fullCommand) throws DukeException {
