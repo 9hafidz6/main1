@@ -332,7 +332,10 @@ public class Ui {
     }
 
     public void showIngredients(Ingredient ingredient, Dish dish) {
+<<<<<<< HEAD
         showLine();
+=======
+>>>>>>> 07cc5da9aa7b9d4958918b61fa2d02c9fc22e062
         System.out.println("\t ingredient: " + ingredient.getName()
                 + "\n\t added to: " + dish.getDishname());
         showLine();

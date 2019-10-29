@@ -87,6 +87,8 @@ public class Duke {
         while (!isExit) {
             try {
                 ui.showOptions();
+
+
                 ui.showLine();
                 fullCommand = ui.readCommand();
                 ui.clearScreen();
