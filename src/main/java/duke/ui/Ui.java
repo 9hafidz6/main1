@@ -295,8 +295,8 @@ public class Ui {
      * @param removed the task
      * @param size    size of list
      */
-    public void showRemovedTask(String removed, int size) {
-        System.out.println("\t Noted. I've removed this task:");
+    public void showRemovedIngredient(String removed, int size) {
+        System.out.println("\t Noted. I've removed this ingredient:");
         System.out.println("\t " + removed);
         showSize(size);
     }
@@ -318,6 +318,11 @@ public class Ui {
         System.out.println("\t you have added the following dish: ");
         System.out.println("\t " + dish);
         showLine();
+    }
+
+    public void showAddedIngredient(String ingredient) {
+        System.out.println("\t you have added the following ingredient: ");
+        System.out.println("\t " + ingredient);
     }
 
     public void showDishes(String Dish, int Nb) {

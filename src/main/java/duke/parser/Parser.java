@@ -45,7 +45,9 @@ public class Parser {
      * @return Command The Command to be executed
      * @throws DukeException for any invalid input
      */
+    //public static Cmd parse(String fullCommand, int size) throws DukeException {
  /*   public static Cmd parse(String fullCommand, int size) throws DukeException {
+>>>>>>> 07cc5da9aa7b9d4958918b61fa2d02c9fc22e062
         //splitted contains the keyword and the rest (description or task number)
         String[] splitted = fullCommand.split(" ", 2);
         //switching on the keyword
@@ -95,7 +97,24 @@ public class Parser {
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
         }
     }
-*/
+<<<<<<< HEAD
+    /*
+    public static Cmd parse(String fullCommand, int size) throws DukeException
+    {
+        //splitted contains the keyword and the rest (description or task number)
+        String[] splitted = fullCommand.split(" ", 2);
+        //switching on the keyword
+        switch (splitted[0])
+        {
+            case "list":
+                return new ListCommand();
+            case "listtoday":
+                return new FindToday();
+            default:
+                throw new DukeException("I'm sorry, but I don't know what that means :-(");
+        }
+    }
+    */
     public static Cmd parse(String fullCommand, Duke.Type type) throws DukeException {
         String[] splitted;
         //= fullCommand.split(" ", 3);
@@ -108,7 +127,7 @@ public class Parser {
                 if (splitted[0].equals("add")) {
                     if (splitted.length != 4)
                         throw new DukeException("must specify ingredient name, amount and/or expiry date");
-                    return new AddCommand<Ingredient>(new Ingredient(splitted[1], Integer.parseInt(splitted[2]), splitted[3]));
+                    return new AddCommand(new Ingredient(splitted[1], Integer.parseInt(splitted[2]), splitted[3]));
                 }
                 if (splitted[0].equals("remove")) {
                     if (splitted.length != 2)
