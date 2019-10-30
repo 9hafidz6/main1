@@ -127,7 +127,7 @@ if there are no dishes in list, output message:
         'q' to exit
 ```
 
-
+if user enters a valid command,
 
 ```
    ____________________________
@@ -197,7 +197,7 @@ if user enters an invalid index, a error message will appear
          _________________________________________________________________________________________
 ```
 
-
+if user enters a valid command,
 
 ```
          _________________________________________________________________________________________
