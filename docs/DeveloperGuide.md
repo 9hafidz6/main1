@@ -59,11 +59,18 @@
 - at app launch: Loads all the data in storage into the application, initialize the  components, reads the commands and executes them correctly.
 - at shut down: shuts down all component and exits the application
 
-The Application consist of 6 other components 
+The Application consist of 11 other components 
 
 - `command`: executes the command that is read from the user
-
+  - DishCommand
+  - OrderCommand
+  - IngredientCommand
 - `exception`: handle error messages 
+- `dish`
+- `fridge`
+- `ingredient`
+- `order`
+- `list`
 - `parser`: determine the next course of action from the user command
 - `storage`: Reads, writes data from and to the hard disk
 - `task`: stores a list of deadline/event/todo that needs to be done
@@ -128,7 +135,7 @@ each of the above class has its own implementation of the `execute` method
 
 API: `Parser.java`
 
-
+makes sense of the data that is read by the user from the Duke Class. 
 
 #### 2.5 Storage Component
 
@@ -137,7 +144,7 @@ API: `Storage.java`
 
 This component  stores entries in a certain format, tasks, ingredients that are already in the Fridge, and anything else that needs to be saved on the hard disk.
 
-It is modeled as an abstract class,  with `TaskStorage.java` and `FridgeStorage.java` both inheriting from it. It allows data (tasks in the list, ingredients in the fridge, recipes in the recipeBook...) to be saved and remembered by our program.  
+It is modelled as an abstract class,  with `TaskStorage.java` and `FridgeStorage.java` both inheriting from it. It allows data (tasks in the list, ingredients in the fridge, recipes in the recipe Book...) to be saved and remembered by our program.  
 
 An example for the format of saving for tasks is :
 
@@ -189,16 +196,16 @@ This class holds the name of the dish as well the ingredients that are associate
 
 
 
-| Methods                       | Description                                                  |
-| ----------------------------- | ------------------------------------------------------------ |
-| getTotalNumberOfOrders(): int | returns `total` which is an int                              |
-| setNumberofOrders(int): void  | takes in an `int` and increment `total` number of orders     |
-| clearOrders(): void           | clears the ingredient list                                   |
-| getDishName(): String         | returns the name of the dish                                 |
-| setRating(int): void          | takes in an `int` and sets the new overall rating of the dish |
-| getRating(): float            | returns the rating of that dish                              |
-| addIngredients(String): void  | takes a string and adds into ingredientlist                  |
-| toString(): String            | it returns a String of all the ingredients that the dish contains |
+| Methods                         | Description                                                  |
+| ------------------------------- | ------------------------------------------------------------ |
+| //getTotalNumberOfOrders(): int | returns `total` which is an int                              |
+| //setNumberofOrders(int): void  | takes in an `int` and increment `total` number of orders     |
+| clearOrders(): void             | clears the ingredient list                                   |
+| getDishName(): String           | returns the name of the dish                                 |
+| //setRating(int): void          | takes in an `int` and sets the new overall rating of the dish |
+| //getRating(): float            | returns the rating of that dish                              |
+| addIngredients(String): void    | takes a string and adds into ingredientlist                  |
+| toString(): String              | it returns a String of all the ingredients that the dish contains |
 
 **<u>DishList Class</u>**
 
