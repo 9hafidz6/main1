@@ -17,6 +17,8 @@
 4. Command Summary
 5.  FAQ
 
+**<u>content page is not up to date yet</u>**
+
 ## 1. Introduction
 
 Duke is targeted towards restaurant chefs who wants to be able to consolidate most of the things happening in their kitchen such as recipes, ingredients, expiry dates etc. By using this product, you are able to order all the ingredients needed for your kitchen. Additionally, this application takes in customers order/preorder of the restaurants dishes. Proceed to the Developer Guide [here]( https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/DeveloperGuide.md ) to learn more about this application. 
@@ -31,9 +33,9 @@ Duke is targeted towards restaurant chefs who wants to be able to consolidate mo
 
 3. Copy the file to the folder you want to use as the home folder for your Duke application.
 
-4. Use the command prompt and navigate to the path where the application is downloaded
+4. Use the command prompt and navigate to the path where the application is downloaded `cd ../FILEPATH`
 
-5. run the command `java -jar v1.3` , application will then be executed 
+5. run the command `java -jar v1.3` , application will then be executed 
 
    ![UI]( https://github.com/AY1920S1-CS2113-T14-2/main1/blob/master/docs/images/Ui.png )
 
@@ -51,7 +53,7 @@ Duke is targeted towards restaurant chefs who wants to be able to consolidate mo
 
 **command format**
 
-- commands are in `UPPER_CASE` are to be provided by the user eg. `add/DESC`, `DESC` is a parameter which can be used as `add noodle`.
+- commands are in `UPPER_CASE` are to be provided by the user eg. `add/DESC`, `DESC` is a parameter which can be used as `add noodle`.
 
 ### 3.1 Main Menu
 
@@ -65,7 +67,7 @@ the user is greeted depending on the time of day, `good morning` , `good evening
 
 ### 3.2 Adding Dish: `add`
 
-user needs to enter `d` in main menu first.
+user needs to enter `d` in main menu first.
 
 To add a dish to the DishList, user needs to execute command below:
 
@@ -155,15 +157,7 @@ if user enters a valid command,
 
 
 
-<<<<<<< HEAD
 ### 3.5 Initializing the Dish List:`initialize`
-
-=======
-
-### 3.5 Initializing the Dish List:`initialize`
-
->>>>>>> 2dc00105bd1389e21d2a653d14f2f0d8331c8053
-user needs to enter `d` in main menu first.
 
 user needs to enter the command below:
 
@@ -187,19 +181,11 @@ no
          LIST IS NOT CLEARED
 ```
 
-<<<<<<< HEAD
-### 3.6 Removing Dish:`remove`
 
-user needs to enter `d` in main menu first.
-
-=======
 
 ### 3.6 Removing Dish:`remove`
 
 user needs to enter `d` in main menu first.
-
->>>>>>> 2dc00105bd1389e21d2a653d14f2f0d8331c8053
-user needs to enter the command below:
 
 Format: `remove i/INDEX`
 
@@ -228,12 +214,10 @@ if user enters a valid command,
          _________________________________________________________________________________________
 ```
 
-<<<<<<< HEAD
-### 3.7 Error Handling 
-=======
+
 ### 3.7 Adding Ingredient
 
-User needs to enter `b` in the menu first. To add an ingredient to the IngredientsList, user needs to execute command below:
+User needs to enter `b` in the menu first. To add an ingredient to the IngredientsList, user needs to execute command below:
 
 Format: `add ` `ingredient name` `ingredient amount` `ingredient expiry date`
 
@@ -253,7 +237,7 @@ Examples:
 
 ### 3.8 Removing Ingredient
 
-User needs to enter `b` in the menu first. To remove an ingredient from the IngredientsList, user needs to execute command below:
+User needs to enter `b` in the menu first. To remove an ingredient from the IngredientsList, user needs to execute command below:
 
 Format: `remove ` `ingredient index`
 
@@ -284,7 +268,7 @@ Examples:
 
 ### 3.9 Finding Ingredient
 
-User needs to enter `b` in the menu first. To find an ingredient from the IngredientsList, user needs to execute command below:
+User needs to enter `b` in the menu first. To find an ingredient from the IngredientsList, user needs to execute command below:
 
 Format: `find` `keyword`
 
@@ -307,7 +291,7 @@ These are the ingredients you searched for!
 
 ### 3.10 Listing all expired ingredients on the date itself
 
-User needs to enter `b` in the menu first. To list all expired ingredient from the IngredientsList on the date itself, user needs to execute command below:
+User needs to enter `b` in the menu first. To list all expired ingredient from the IngredientsList on the date itself, user needs to execute command below:
 
 Format: `listtoday`
 
@@ -327,7 +311,7 @@ Otherwise,
 
 ### 3.11 Removing all expired ingredients 
 
-User needs to enter `a` in the menu.
+User needs to enter `a` in the menu.
 
 if there are no expired ingredients for the date itself, message is output:
 
@@ -344,7 +328,7 @@ salt, amount is: 50 expired on 31st of October 2019
 
 ### 3.12 Using an ingredient 
 
-User needs to enter `b` in the menu first. To use an ingredient from the IngredientsList, user needs to execute command below:
+User needs to enter `b` in the menu first. To use an ingredient from the IngredientsList, user needs to execute command below:
 
 Format: `use` `ingredient name` `amount` 
 
@@ -368,8 +352,6 @@ Also, once amount reaches 0, the ingredient will be deleted off from the Ingredi
 
 
 ### 3.13 Error Handling 
->>>>>>> 2dc00105bd1389e21d2a653d14f2f0d8331c8053
-
 handles unexpected commands from the user such as unknown/incomplete command. if user enters an invalid command, the application will output a message that corresponds to what the user entered wrongly.
 
 eg. `deadline` <empty desc>, `deadline` <desc> `by` <empty desc>, `delete` <empty indx>
@@ -382,6 +364,8 @@ outputs:
 	 ____________________________________________________________
 
 ```
+
+**<u>3.14 to 3.17 are work in progress</u>**
 
 ### 3.14 stats: gives the statistics of the Dish
 
@@ -470,7 +454,9 @@ When the user loads the program if there are any expired ingredients in the frid
 
 by typing `yes`, the list of expired ingredients is printed
 
-by typing anything else, the main menu appears where the user can select how he whishes to proceed.
+by typing anything else, the main menu appears where the user can select how he wishes to proceed.
+
+
 
 
 ## 4. Command Summary
@@ -485,6 +471,8 @@ Index | Keyword  | Usage
 16 | remove | remove <indx> 
 17 | list | list 
 18 | ingredient | ingredient <desc> <amount> <index> 
+
+**<u>command summary are work in progress</u>**
 
 # 5. FAQ
 

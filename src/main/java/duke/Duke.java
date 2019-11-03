@@ -69,7 +69,7 @@ public class Duke {
 
     public void run() throws IOException, InterruptedException {
         String fullCommand;
-        ui.clearScreen();
+        //ui.clearScreen();
         ui.showWelcome();
         if (fridge.hasExpiredIngredients()) {
             ui.showHasExpiring();
@@ -90,7 +90,7 @@ public class Duke {
                 ui.showOptions();
                 ui.showLine();
                 fullCommand = ui.readCommand();
-                ui.clearScreen();
+                //ui.clearScreen();
                 ui.showLine();
                 switch (fullCommand) {
                     case "options": {
@@ -116,7 +116,7 @@ public class Duke {
                         while (true) {
                             try {
                                 fullCommand = ui.readCommand();
-                                ui.clearScreen();
+                                //ui.clearScreen();
                                 if (fullCommand.trim().equals("back")) {
                                     break;
                                 }
@@ -152,7 +152,7 @@ public class Duke {
                         while (true) {
                             try {
                                 fullCommand = ui.readCommand();
-                                ui.clearScreen();
+                                //ui.clearScreen();
                                 if (fullCommand.trim().equals("back")) {
                                     break;
                                 }
@@ -180,7 +180,7 @@ public class Duke {
                             try {
                                 ui.showDishTemplate();
                                 fullCommand = ui.readCommand();
-                                ui.clearScreen();
+                                //ui.clearScreen();
                                 if(fullCommand.trim().equals("q")) {
                                     Cmd command = new ExitCommand();
                                     command.execute(null, ui, null);
@@ -191,7 +191,7 @@ public class Duke {
                                     break;
                                 }
                                 if(fullCommand.trim().equals("template")) {
-                                    ui.clearScreen();
+                                    //ui.clearScreen();
                                     continue;
                                 }
                                 Cmd<Dish> command = Parser.parse(fullCommand, Type.DISH);
