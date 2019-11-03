@@ -1,17 +1,12 @@
 package duke.ui;
 
 import duke.Duke;
-
+import duke.dish.Dish;
 import duke.ingredient.Ingredient;
 import duke.ingredient.IngredientsList;
 
-import java.util.Calendar;
-
-import duke.dish.Dish;
-
-
 import java.io.IOException;
-
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -46,61 +41,53 @@ public class Ui {
     }
 
     public void chefDrawing() {
-        System.out.println("                           (c)___c____(c)                           ");
-        System.out.println("                            \\ ........../                           ");
-        System.out.println("                             |.........|                            ");
-        System.out.println("                              |.......|                            ");
-        System.out.println("                              |.......|                            ");
-        System.out.println("                              |=======|                            ");
-        System.out.println("                              |=======|                            ");
-        System.out.println("                             __o)''''::?                            ");
-        System.out.println("                            C__    c)::;                            ");
-        System.out.println("                               >--   ::     /\\                            ");
-        System.out.println("                               (____/      /__\\                            ");
-        System.out.println("                               } /''|      |##|                            ");
-        System.out.println("                    __/       (|V ^ )\\     |##|                            ");
-        System.out.println("                    o | _____/ |#/ / |     |##|                            ");
-        System.out.println("           @        o_|}|_____/|/ /  |     |##|                            ");
-        System.out.println("                          _____/ /   |     ~!!~                            ");
-        System.out.println("              ======ooo}{|______)#   |     /`'\\                            ");
-        System.out.println("          ~~~~ ;    ;          ###---|8     ''                            ");
-        System.out.println("        ____;_____;____        ###====     /:|\\                            ");
-        System.out.println("       (///0///@///@///)       ###@@@@|                            ");
-        System.out.println("       |~~~~~~~~~~~~~~~|       ###@@@@|                            ");
-        System.out.println("        \\             /        ###@@@@|               +                            ");
-        System.out.println("         \\___________/         ###xxxxx      /\\      //                            ");
-        System.out.println("           H H   H  H          ###|| |      /  \\    //                            ");
-        System.out.println("           H H   H  H           | || |     /____\\  /~_^_                            ");
-        System.out.println("           H H   H  H           C |C |     _|@@|_ /__|#|_                            ");
-        System.out.println("           H H   H  H            || ||    /_|@@|_/___|#|/|                            ");
-        System.out.println(" v    \\/   H(o) (o) H            || ::   |:::::::::::::|#|                            ");
-        System.out.println(" ~    ~~  (o)      (o)        Ccc__)__)   |   CHEF      |#|                            ");
-        System.out.println("  \\|/      ~   @* & ~                    |:::::::::::::|/  \\|/                            ");
-        System.out.println("   ~           \\|/        !!        \\ !/  ~~~~~~~~~~~~~    ~~~                            ");
-        System.out.println("               ~~~        ~~         ~~           ~~                            ");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                            \n");
+        System.out.println("                           (c)___c____(c)           ");
+        System.out.println("                            \\ ........../          ");
+        System.out.println("                             |.........|            ");
+        System.out.println("                              |.......|             ");
+        System.out.println("                              |.......|             ");
+        System.out.println("                              |=======|             ");
+        System.out.println("                              |=======|             ");
+        System.out.println("                             __o)''''::?            ");
+        System.out.println("                            C__    c)::;            ");
+        System.out.println("                               >--   ::     /\\     ");
+        System.out.println("                               (____/      /__\\    ");
+        System.out.println("                               } /''|      |##|     ");
+        System.out.println("                    __/       (|V ^ )\\     |##|    ");
+        System.out.println("                    o | _____/ |#/ / |     |##|     ");
+        System.out.println("           @        o_|}|_____/|/ /  |     |##|     ");
+        System.out.println("                          _____/ /   |     ~!!~     ");
+        System.out.println("              ======ooo}{|______)#   |     /`'\\    ");
+        System.out.println("          ~~~~ ;    ;          ###---|8     ''      ");
+        System.out.println("        ____;_____;____        ###====     /:|\\    ");
+        System.out.println("       (///0///@///@///)       ###@@@@|             ");
+        System.out.println("       |~~~~~~~~~~~~~~~|       ###@@@@|             ");
+        System.out.println("        \\             /        ###@@@@|               +          ");
+        System.out.println("         \\___________/         ###xxxxx      /\\      //         ");
+        System.out.println("           H H   H  H          ###|| |      /  \\    //           ");
+        System.out.println("           H H   H  H           | || |     /____\\  /~_^_         ");
+        System.out.println("           H H   H  H           C |C |     _|@@|_ /__|#|_         ");
+        System.out.println("           H H   H  H            || ||    /_|@@|_/___|#|/|        ");
+        System.out.println(" v    \\/   H(o) (o) H            || ::   |:::::::::::::|#|       ");
+        System.out.println(" ~    ~~  (o)      (o)        Ccc__)__)   |   CHEF      |#|       ");
+        System.out.println("  \\|/      ~   @* & ~                    |:::::::::::::|/  \\|/  ");
+        System.out.println("   ~           \\|/        !!        \\ !/  ~~~~~~~~~~~~~    ~~~  ");
+        System.out.println("               ~~~        ~~         ~~           ~~              ");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   ");
     }
     public void dishDrawing() {
         System.out.println("            (\\                                      ");
-        System.out.println("             \\ \\                                      ");
-        System.out.println("               \\/ ___,.-------..__                                      ");
-        System.out.println("        //\\\\ _,-'\\\\               `'--._ //\\\\                                      ");
-        System.out.println("        \\\\ ;'      \\\\                   `: //                                      ");
-        System.out.println("         `(          \\\\                   )'                                      ");
-        System.out.println("           :.          \\\\,----,         ,;                                      ");
-        System.out.println("            `.`--.___   (    /  ___.--','                                      ");
-        System.out.println("              `.     ``-----'-''     ,'                                      ");
-        System.out.println("                 -.               ,-                                      ");
-        System.out.println("                     `-._______.-                                      ");
+        System.out.println("             \\ \\                                   ");
+        System.out.println("               \\/ ___,.-------..__                  ");
+        System.out.println("        //\\\\ _,-'\\\\               `'--._ //\\\\  ");
+        System.out.println("        \\\\ ;'      \\\\                   `: //    ");
+        System.out.println("         `(          \\\\                   )'       ");
+        System.out.println("           :.          \\\\,----,         ,;         ");
+        System.out.println("            `.`--.___   (    /  ___.--','            ");
+        System.out.println("              `.     ``-----'-''     ,'              ");
+        System.out.println("                 -.               ,-                 ");
+        System.out.println("                     `-._______.-                    ");
         System.out.println("\n");
-    }
-    public void orderDrawing() {
-        System.out.println( "\t ╭━━━╮╱╱╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱\n" +
-                "\t ┃╭━╮┃╱╱╱╱╱╱╱╱╱┃┃╱╱╱╱╱╱╱╱╱╱╱\n" +
-                "\t ┃┃╱┃┃╱╱╭━╮╱╱╭━╯┃╱╱╭━━╮╱╱╭━╮\n" +
-                "\t ┃┃╱┃┃╱╱┃╭╯╱╱┃╭╮┃╱╱┃┃━┫╱╱┃╭╯\n" +
-                "\t ┃╰━╯┃╱╱┃┃╱╱╱┃╰╯┃╱╱┃┃━┫╱╱┃┃╱\n" +
-                "\t ╰━━━╯╱╱╰╯╱╱╱╰━━╯╱╱╰━━╯╱╱╰╯╱\n");
     }
 
     /**
@@ -135,6 +122,7 @@ public class Ui {
         System.out.println("\t 'b' add/remove/use an ingredient");
         System.out.println("\t 'c' place/remove/change an order");
         System.out.println("\t 'd' add/remove/change a dish");
+        System.out.println("\t 't' view today's todo list");
         System.out.println("\t 'q' to exit");
     }
 
@@ -168,30 +156,24 @@ public class Ui {
         System.out.println("\t add <dish name>");
         System.out.println("\t remove <dish index>");
         System.out.println("\t list");
-        System.out.println("\t ingredient <ingredient to be added> <amount of ingredient> <index of dish where ingredient is to be added to>");
+        System.out.println("\t ingredient <description> <amount> <index>");
         System.out.println("\t initialize (REMOVES all entries in the list)");
-        System.out.println("\t back, return to maim menu");
+        System.out.println("\t back, return to main menu");
         System.out.println("\t template");
         showLine();
     }
     public void showOrderTemplate() {
-        orderDrawing();
         showLine();
-        System.out.println("\t Continue by adding, removing, listing, altering, marking done order \n\t Template: ");
+        System.out.println("\t Continue by adding, removing, altering, listing order and initializing order list. \n\t Command Template: ");
         showLine();
-        System.out.println("\t add <dish1 name>*<dish1 amount>, <dish2 name>*<dish2 amount>, ... , <dishN name>*<dishN amount>" +
-                " /on <order date: DD/MM/YYYY>");
-        System.out.println("\t list <list type: all, undone, today, undoneToday>");
-        System.out.println("\t list dish <filtering dish name>");
-        System.out.println("\t list date <filtering order serving date: DD/MM/YYYY>");
-
-        System.out.println("\t alter <order index> <order date: DD/MM/YYYY>");
-        System.out.println("\t done <order index>");
-        System.out.println("\t remove <order index>");
-
-
-        System.out.println("\t initialize (REMOVES all entries in the order list)");
-        System.out.println("\t ***** Note: order index starts from 1 *****");
+        System.out.println("\t init");
+        System.out.println("\t add [-d ORDER_DATE-(dd/mm/yyyy)] -n DISH1_NAME[*DISH_AMOUNT], DISH2_NAME[*DISH_AMOUNT]");
+        System.out.println("\t alter ORDER_INDEX ORDER_DATE-(dd/mm/yyyy)");
+        System.out.println("\t remove ORDER_INDEX");
+        System.out.println("\t done ORDER_INDEX");
+        System.out.println("\t list [-l LIST_TYPE-(option: all (default) | undone | today | undoneToday)]");
+        System.out.println("\t list -n DISH_NAME    *** Find the dishes in today's undone orders ***");
+        System.out.println("\t list -d ORDER_DATE-(dd/mm/yyyy) [-l LIST_TYPE-(option: all (default) | undone)]");
         showLine();
     }
     public void showIngredientsInFridge(IngredientsList ingredientsList) {
@@ -372,7 +354,7 @@ public class Ui {
     }
 
     /**
-     * everytime this method is executed, it clears the console screen
+     * Every time this method is executed, it clears the console screen.
      * @throws IOException
      * @throws InterruptedException
      */
