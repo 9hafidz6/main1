@@ -1,29 +1,68 @@
 # Restaurant Manager - User Guide
 
-1.  Introduction
-2. Quick Start
-3. Features
-   - Menu
-   - Adding Dish
-   - Adding Ingredient to Dish
-   - List all Dish
-   - Initialize Dish
-   - Removing Dish
-   - Load and save tasks to hard disk
-   - Identify dates and times
-   - delete: Delete a task
-   - find: Find a task by searching for a keyword. 
-   - Error Handling 
-4. Command Summary
-5.  FAQ
+1. Introduction
 
-**<u>content page is not up to date yet</u>**
+2. Quick Start
+
+3. Features
+   
+   3.1 Main Menu
+   
+   3.2 Dish
+   
+   ​	3.2.1 Adding Dish
+   
+   ​	3.2.2 Adding Ingredient to Dish
+   
+   ​	3.2.3 List all Dishes
+   
+   ​	3.2.4 Initializing the Dish
+   
+   ​	3.2.5 Removing a Dish
+   
+   3.3 Ingredient
+   
+   ​	3.3.1 Adding Ingredient
+   
+   ​	3.3.2 Removing Ingredient
+   
+   ​	3.3.3 Finding Ingredients
+   
+   ​	3.3.4 Listing all Expired Ingredient on Date itself
+   
+   ​	3.3.5 Removing all Expired Ingredient 
+   
+   ​	3.3.6 Using an Ingredient
+   
+   3.4 Fridge
+   
+   ​	3.4.1 Add an Ingredient to Fridge
+   
+   ​	3.4.2 Removing an Ingredient from Fridge
+   
+   ​	3.4.3 Use Ingredient from Fridge 
+   
+   ​	3.4.4 Remove all Expired Ingredient from Fridge
+   
+   3.5 Order
+   
+   ​	3.5.1 Adding Order
+   
+   ​	3.5.2 Altering Order
+   
+   ​	3.5.3 Deleting Order
+   
+   ​	3.5.4 Done Order
+   
+   ​	3.5.5 Initializing Order
+   
+4. Command Summary
+
+5. FAQ
 
 ## 1. Introduction
 
-Duke is targeted towards restaurant chefs who wants to be able to consolidate most of the things happening in their kitchen such as recipes, ingredients, expiry dates etc. By using this product, you are able to order all the ingredients needed for your kitchen. Additionally, this application takes in customers order/preorder of the restaurants dishes. Proceed to the Developer Guide [here]( https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/DeveloperGuide.md ) to learn more about this application. 
-
-
+Duke is targeted towards restaurant chefs who wants to be able to consolidate most of the things happening in their kitchen such as recipes, ingredients, expiry dates etc. By using this product, you are able to order all the ingredients needed for your kitchen. Additionally, this application takes in customers order or preorder of the restaurants dishes. Proceed to the Developer Guide [here]( https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/DeveloperGuide.md ) to learn more about this application. 
 
 ## 2. Quick Start
 
@@ -43,7 +82,7 @@ Duke is targeted towards restaurant chefs who wants to be able to consolidate mo
 
 7. Some example commands
 
-   1. given various options in menu, user can type these commands`option` ,`q`, `a`, `b`, `c`, `d`.
+   1. given various options in menu, user can type these commands `options` ,`q`, `t`, `a`, `b`, `c`, `d`.
    2. user enters `d` then `add chicken rice`, dish is then added to the list
    3. user enters `d` then `list`, outputs the the dishes and the ingredients associated to the dish in table form
 
@@ -53,7 +92,7 @@ Duke is targeted towards restaurant chefs who wants to be able to consolidate mo
 
 **command format**
 
-- commands are in `UPPER_CASE` are to be provided by the user eg. `add/DESC`, `DESC` is a parameter which can be used as `add noodle`.
+- commands that are in `UPPER_CASE` are to be provided by the user eg. `DESC`, is a parameter which can be used as `add DESC`. for example `add noodle`.
 
 ### 3.1 Main Menu
 
@@ -65,13 +104,19 @@ the user is greeted depending on the time of day, `good morning` , `good evening
 - `c`, proceeds to **order** commands 
 - `d`, proceeds to **dish** commands
 
-### 3.2 Adding Dish: `add`
+### 3.2 Dishes
+
+the user needs to enter command `d` from the Main menu to enter the Dish template.
+
+add ui here
+
+#### 3.2.1 Adding Dish
 
 user needs to enter `d` in main menu first.
 
 To add a dish to the DishList, user needs to execute command below:
 
-Format: `add d/DESC`
+Format: `add DESC`
 
 if the dish already exist in the list, message is output:
 
@@ -82,7 +127,7 @@ if the dish already exist in the list, message is output:
 Examples: 
 
 - `add chicken rice`
-- ``add tom yum noodles`
+- `add tom yum noodles`
 
 ```
          _________________________________________________________________________________________
@@ -91,15 +136,13 @@ Examples:
          _________________________________________________________________________________________
 ```
 
-
-
-### 3.3 Adding Ingredient to Dish: `ingredient`
+#### 3.2.2 Adding Ingredient to Dish
 
 user needs to enter `d` in main menu first.
 
 Executing this command associates an ingredient to a certain Dish. user needs to execute the command below:
 
-Format: `ingredient d/DESC n/AMOUNT i/INDEX`
+Format: `ingredient DESC AMOUNT INDEX`
 
 Examples:
 
@@ -113,9 +156,7 @@ Examples:
          _________________________________________________________________________________________
 ```
 
-
-
-### 3.4 List all Dishes: `list`
+#### 3.2.3 List all Dishes
 
 user needs to enter `d` in main menu first.
 
@@ -155,9 +196,7 @@ if user enters a valid command,
 2. | chicken noodle| noodle,flour,|
 ```
 
-
-
-### 3.5 Initializing the Dish List:`initialize`
+#### 3.2.4 Initializing the Dish List
 
 user needs to enter the command below:
 
@@ -181,13 +220,11 @@ no
          LIST IS NOT CLEARED
 ```
 
-
-
-### 3.6 Removing Dish:`remove`
+#### 3.2.5 Removing Dish
 
 user needs to enter `d` in main menu first.
 
-Format: `remove i/INDEX`
+Format: `remove INDEX`
 
 Examples:
 
@@ -214,8 +251,13 @@ if user enters a valid command,
          _________________________________________________________________________________________
 ```
 
+### 3.3 Ingredient
 
-### 3.7 Adding Ingredient
+the user needs to enter command `b` from the Main menu to enter the Dish template.
+
+add ui here
+
+#### 3.3.1 Adding Ingredient
 
 User needs to enter `b` in the menu first. To add an ingredient to the IngredientsList, user needs to execute command below:
 
@@ -235,7 +277,7 @@ Examples:
          _________________________________________________________________________________________
 ```
 
-### 3.8 Removing Ingredient
+#### 3.3.1 Removing Ingredient
 
 User needs to enter `b` in the menu first. To remove an ingredient from the IngredientsList, user needs to execute command below:
 
@@ -266,7 +308,7 @@ Examples:
          _________________________________________________________________________________________
 ```
 
-### 3.9 Finding Ingredient
+#### 3.3.2 Finding Ingredient
 
 User needs to enter `b` in the menu first. To find an ingredient from the IngredientsList, user needs to execute command below:
 
@@ -289,7 +331,7 @@ These are the ingredients you searched for!
 	 9. salt 60 21/07/2021
 ```
 
-### 3.10 Listing all expired ingredients on the date itself
+#### 3.3.3 Listing all expired ingredients on the date itself
 
 User needs to enter `b` in the menu first. To list all expired ingredient from the IngredientsList on the date itself, user needs to execute command below:
 
@@ -309,7 +351,7 @@ Otherwise,
 	 7. chilli, amount is: 60 expired on 31st of October 2019.
 ```
 
-### 3.11 Removing all expired ingredients 
+#### 3.3.4 Removing all expired ingredients 
 
 User needs to enter `a` in the menu.
 
@@ -323,10 +365,10 @@ Otherwise,
 
 ```
 	Removed:  ingredients: 
-salt, amount is: 50 expired on 31st of October 2019
+	salt, amount is: 50 expired on 31st of October 2019
 ```
 
-### 3.12 Using an ingredient 
+#### 3.3.5 Using an ingredient 
 
 User needs to enter `b` in the menu first. To use an ingredient from the IngredientsList, user needs to execute command below:
 
@@ -354,7 +396,7 @@ Also, once amount reaches 0, the ingredient will be deleted off from the Ingredi
 ### 3.13 Error Handling 
 handles unexpected commands from the user such as unknown/incomplete command. if user enters an invalid command, the application will output a message that corresponds to what the user entered wrongly.
 
-eg. `deadline` <empty desc>, `deadline` <desc> `by` <empty desc>, `delete` <empty indx>
+eg. adding ingredient `add`
 
 outputs:
 
@@ -365,21 +407,7 @@ outputs:
 
 ```
 
-**<u>3.14 to 3.17 are work in progress</u>**
-
-### 3.14 stats: gives the statistics of the Dish
-
-### 3.15 order: creates a new order 
-
-### 3.16 preorder: 
-
-### 3.17 help: shows a list of commands to the user 
-
-things to include in version 2:
-
-...
-
-### 3.2 fridge commands
+### 3.4 Fridge commands
 
 To be able to execute the fridge commands the user must choose, type `'a'- remove all expired` or `'b' - add/remove/use an ingredient` in the main menu.  
 
@@ -391,7 +419,7 @@ by typing `show`, the user gets a list of all of the ingredients currently in th
 
 by typing `back`, he returns to the main menu
 
-#### 3.2.1 add an ingredient to the Fridge
+#### 3.4.1 Add an ingredient to the Fridge
 
 To add an ingredient to the Fridge, user needs to execute command below:
 
@@ -405,7 +433,7 @@ Examples:
 
   If the user adds an expired ingredient,eg. `add cheese 150 2/3/2019`  he is warned by ` WARNING! expired ingredient: cheese, amount is: 100 expired on 2nd of March 2019`
 
-#### 3.2.2 remove an ingredient from the fridge
+#### 3.4.2 Remove an ingredient from the fridge
 
 To remove an ingredient from the Fridge, user needs to execute command below:
 
@@ -427,7 +455,7 @@ Examples:
 
   
 
-#### 3.2.3 use an ingredient from the fridge
+#### 3.4.3 Use an ingredient from the fridge
 
 To use an ingredient from the Fridge, user needs to execute command below:
 
@@ -439,7 +467,7 @@ Examples:
 
   The user must use the most recently expiring ingredients in order to prevent food waste.  
 
-### 3.3 remove all expired ingredients from the fridge
+#### 3.4.4 Remove all expired ingredients from the fridge
 
 From the main menu the user selects `a`, and it will remove all expired ingredients from the fridge.
 
@@ -456,23 +484,76 @@ by typing `yes`, the list of expired ingredients is printed
 
 by typing anything else, the main menu appears where the user can select how he wishes to proceed.
 
+### 3.5 Order
 
+the user needs to enter command `c` from the Main menu to enter the Dish template.
 
+add ui here
+
+#### 3.5.1 Adding Order
+
+#### 3.5.1 Altering Order 
+
+#### 3.5.2 Deleting Order
+
+#### 3.5.3 Done Order
+
+#### 3.5.4 Initializing Order
+
+#### 3.5.5 List Orders
 
 ## 4. Command Summary
 
-Index | Keyword  | Usage 
------ | -------- | ----------
-1 | back | back 
-2 | template | template 
- |  |                                    
- |            |  
-15 | add | dishadd <desc> 
-16 | remove | remove <indx> 
-17 | list | list 
-18 | ingredient | ingredient <desc> <amount> <index> 
+Main Menu
 
-**<u>command summary are work in progress</u>**
+Index | Keyword  | Usage | Description 
+----- | -------- | ---------- | ---------- 
+1 | options | options | show options 
+2 | q       | q | exit program 
+ 3 | t | t | view todo list 
+ 4 | a | a | remove expired ingredients 
+ 5 | b | b | go into ingredient template 
+ 6 | c | c | go into order template 
+ 7 | d | d | go into dish template 
+
+Ingredient template
+
+| Index | Keyword   | Usage                      | Description                    |
+| ----- | --------- | -------------------------- | ------------------------------ |
+| 1     | add       | add <desc> <amount> <Date> | add an Ingredient to the list  |
+| 2     | remove    | remove <index>             | remove an ingredient from list |
+| 3     | find      | find <desc>                | find an ingredient in list     |
+| 4     | listtoday | listtoday                  | list all expired ingredient    |
+| 5     | a         | a                          | removes expired ingredient     |
+| 6     | use       | use <desc> <amount>        | use an ingredient              |
+
+Order Template
+
+| Index | Keyword | Usage | Description |
+| ----- | ------- | ----- | ----------- |
+| 1     |         |       |             |
+| 2     |         |       |             |
+| 3     |         |       |             |
+
+Dish Template
+
+| Index | Keyword    | Usage                              | Description               |
+| ----- | ---------- | ---------------------------------- | ------------------------- |
+| 1     | add        | add <desc>                         | adds a dish to the list   |
+| 2     | remove     | remove <index>                     | removes a dish from list  |
+| 3     | list       | list                               | list all dishes           |
+| 4     | initialize | initialize                         | clears the dish list      |
+| 5     | ingredient | ingredient <desc> <amount> <index> | add an ingredient to dish |
+
+common commands in template
+
+| Index | Keyword  | Usage    | Description                   |
+| ----- | -------- | -------- | ----------------------------- |
+| 1     | template | template | shows the template of current |
+| 2     | back     | back     | goes to main menu             |
+| 3     | q        | q        | exits program                 |
+
+
 
 # 5. FAQ
 
