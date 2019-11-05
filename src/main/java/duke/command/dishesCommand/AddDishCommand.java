@@ -2,17 +2,20 @@ package duke.command.dishesCommand;
 
 import duke.command.Command;
 import duke.dish.Dish;
+import duke.dish.DishList;
 import duke.exception.DukeException;
-import duke.list.GenericList;
-import duke.storage.Storage;
+import duke.ingredient.IngredientsList;
+import duke.order.OrderList;
+import duke.storage.FridgeStorage;
+import duke.storage.OrderStorage;
 import duke.ui.Ui;
 
-public class AddDishCommand extends Command<Dish> {
+public class AddDishCommand extends Command {
 
     private Dish dish;
 
+    //constructor
     public AddDishCommand(Dish dish) {
-        //super(dish);
         this.dish = dish;
     }
 
@@ -25,7 +28,7 @@ public class AddDishCommand extends Command<Dish> {
      * @throws DukeException
      */
     @Override
-    public void execute(GenericList<Dish> dishList, Ui ui, Storage storage) throws DukeException {
+    public void execute(IngredientsList il, DishList dishList, OrderList ol, Ui ui, FridgeStorage fs, OrderStorage os) throws DukeException {
         boolean flag = true;
         try {
             if(dishList.size() == 0) { //if the list is empty, immediately add dish in it
@@ -53,5 +56,4 @@ public class AddDishCommand extends Command<Dish> {
             throw new DukeException("unable to add dish");
         }
     }
-
 }

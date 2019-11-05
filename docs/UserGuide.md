@@ -82,7 +82,7 @@ Duke is targeted towards restaurant chefs who wants to be able to consolidate mo
 
 7. Some example commands
 
-   1. given various options in menu, user can type these commands `options` ,`q`, `t`, `a`, `b`, `c`, `d`.
+   1. given various options in menu, user can type these commands `options` ,`q`, `t`, `a`, `b`, `c`, `d`.
    2. user enters `d` then `add chicken rice`, dish is then added to the list
    3. user enters `d` then `list`, outputs the the dishes and the ingredients associated to the dish in table form
 
@@ -92,7 +92,7 @@ Duke is targeted towards restaurant chefs who wants to be able to consolidate mo
 
 **command format**
 
-- commands that are in `UPPER_CASE` are to be provided by the user eg. `DESC`, is a parameter which can be used as `add DESC`. for example `add noodle`.
+- commands that are in `UPPER_CASE` are to be provided by the user eg. `DESC`, is a parameter which can be used as `add DESC`. for example `add noodle`.
 
 ### 3.1 Main Menu
 
@@ -116,7 +116,7 @@ user needs to enter `d` in main menu first.
 
 To add a dish to the DishList, user needs to execute command below:
 
-Format: `add DESC`
+Format: `add <DESC>`
 
 if the dish already exist in the list, message is output:
 
@@ -142,7 +142,7 @@ user needs to enter `d` in main menu first.
 
 Executing this command associates an ingredient to a certain Dish. user needs to execute the command below:
 
-Format: `ingredient DESC AMOUNT INDEX`
+Format: `ingredient <DESC> <AMOUNT> <INDEX>`
 
 Examples:
 
@@ -224,7 +224,9 @@ no
 
 user needs to enter `d` in main menu first.
 
-Format: `remove INDEX`
+user needs to enter the command below:
+
+Format: `remove <INDEX>`
 
 Examples:
 

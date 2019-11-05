@@ -14,6 +14,11 @@ public class Dish implements Printable {
      * assigns dishname to name and instantiate ingredientList
      * @param name assigns dishname to name
      */
+    public Dish(String name, IngredientsList il) {
+        dishname = name;
+        ingredientsList = il;
+    }
+
     public Dish(String name) {
         this.dishname = name;
         this.ingredientsList = new IngredientsList();
@@ -48,15 +53,19 @@ public class Dish implements Printable {
      * @return all ingredients associated to the dish in string format
      */
     public String toString() {
-        String str = "";
+        String str = "Recipe for " + dishname;
         for (Ingredient i : ingredientsList.getAllEntries()) {
-            str += i.getName() + ",";
+            str += "\n" + i.getName() + ", " + i.getAmount();
         }
-        return str;
+        return str; //Multi-line depending on the size of ingredient list
     }
 
     @Override
     public String printInFile() {
-        return null;
+        String str = dishname;
+        for (Ingredient i : ingredientsList.getAllEntries()) {
+            str += "|" + i.getName() + "|" + i.getAmount();
+        }
+        return str; //Single line
     }
 }
