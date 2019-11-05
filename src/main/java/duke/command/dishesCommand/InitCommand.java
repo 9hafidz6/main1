@@ -13,6 +13,14 @@ public class InitCommand extends Command<Dish> {
         //clears all the amount in dishes
     }
 
+    //@@ Author Hafidz
+    /**
+     *
+     * @param dish1
+     * @param ui
+     * @param storage
+     * @throws DukeException
+     */
     @Override
     public void execute(GenericList<Dish> dish1, Ui ui, Storage storage) throws DukeException {
         System.out.println("\t are you sure you want to clear list? [y/n]");

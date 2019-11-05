@@ -16,6 +16,14 @@ public class AddDishCommand extends Command<Dish> {
         this.dish = dish;
     }
 
+    //@@ Author Hafidz
+    /**
+     *
+     * @param dishList contains a list of dishes
+     * @param ui
+     * @param storage
+     * @throws DukeException
+     */
     @Override
     public void execute(GenericList<Dish> dishList, Ui ui, Storage storage) throws DukeException {
         boolean flag = true;

@@ -1,6 +1,7 @@
 package duke.command.dishesCommand;
 
 
+import dnl.utils.text.table.TextTable;
 import duke.command.Command;
 import duke.dish.Dish;
 import duke.exception.DukeException;
@@ -11,10 +12,17 @@ import duke.ui.Ui;
 
 
 public class ListDishCommand extends Command<Dish> {
-    //private TextTable tt;
+    private TextTable tt;
     private String[] ColNames = {"Dish", "ingredient"}; //initialize the column names of the table
 
-
+    //@@ Author Hafidz
+    /**
+     *
+     * @param dish1
+     * @param ui
+     * @param storage
+     * @throws DukeException
+     */
     @Override
     public void execute(GenericList<Dish> dish1, Ui ui, Storage storage) throws DukeException {
         Object[][] data = new Object[dish1.size()][2]; //using text utils to display data in form of a table
@@ -28,9 +36,9 @@ public class ListDishCommand extends Command<Dish> {
                 data[a][0] = dish1.getEntry(a).getDishname();
                 data[a][1] = stringBuilder;
             }
-            //tt = new TextTable(ColNames, data); //place data in table
-            //tt.setAddRowNumbering(true);
-            //tt.printTable(); //print out table to user
+            tt = new TextTable(ColNames, data); //place data in table
+            tt.setAddRowNumbering(true);
+            tt.printTable(); //print out table to user
         }
     }
 }

@@ -20,6 +20,14 @@ public class AddIngredient extends Command<Dish> {
         this.index = index;
     }
 
+    //@@ Author Hafidz
+    /**
+     *
+     * @param dishList
+     * @param ui
+     * @param storage
+     * @throws DukeException
+     */
     @Override
     public void execute(GenericList<Dish> dishList, Ui ui, Storage storage) throws DukeException {
         try {
