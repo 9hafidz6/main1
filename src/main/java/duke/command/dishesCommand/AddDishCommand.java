@@ -21,12 +21,16 @@ public class AddDishCommand extends Command {
     }
 
     //@@ Author Hafidz
+
     /**
-     *
-     * @param dishList contains a list of dishes
+     * @param fridge
+     * @param dishList
+     * @param ol
      * @param ui
-     * @param storage
+     * @param fs
+     * @param os
      * @throws DukeException
+     * @@@author Hafidz
      */
     @Override
     public void execute(Fridge fridge, DishList dishList, OrderList ol, Ui ui, FridgeStorage fs, OrderStorage os) throws DukeException {

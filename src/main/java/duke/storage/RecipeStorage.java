@@ -6,6 +6,7 @@ import duke.exception.DukeException;
 import duke.ingredient.Ingredient;
 import duke.ingredient.IngredientsList;
 import duke.list.GenericList;
+import duke.order.Order;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class RecipeStorage extends Storage<Dish> {
                 if (i%2 == 1) {
                     //If i is odd, it would be the name of the ingredient
                     desc = words[i];
+
                 }
                 else if (i>1) {
                     //If i is even, it would be the amount of said ingredient

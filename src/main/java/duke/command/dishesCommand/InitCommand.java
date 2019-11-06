@@ -4,6 +4,7 @@ import duke.command.Command;
 import duke.dish.Dish;
 import duke.dish.DishList;
 import duke.exception.DukeException;
+import duke.fridge.Fridge;
 import duke.ingredient.IngredientsList;
 import duke.list.GenericList;
 import duke.order.OrderList;
@@ -22,7 +23,7 @@ public class InitCommand extends Command {
 
     /**
      * this method gives user the option to either clear the list of dishes, dishList.clearList()
-     * @param il list of ingredient
+     * @param dishList list of ingredient
      * @param dishList list of dishes
      * @param ol list of orders
      * @param ui output messages for user
@@ -31,7 +32,7 @@ public class InitCommand extends Command {
      * @throws DukeException
      */
     @Override
-    public void execute(IngredientsList il, DishList dishList, OrderList ol, Ui ui, FridgeStorage fs, OrderStorage os) throws DukeException {
+    public void execute(Fridge fridge, DishList dishList, OrderList ol, Ui ui, FridgeStorage fs, OrderStorage os) throws DukeException {
         System.out.println("\t are you sure you want to clear list? [y/n]");
         String command = ui.readCommand();
         if(command.toLowerCase().equals("y")){

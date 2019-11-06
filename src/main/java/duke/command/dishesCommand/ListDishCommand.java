@@ -38,11 +38,10 @@ public class ListDishCommand extends Command {
                 //data[a][0] = dishList.getEntry(a).getDishname();
                 //data[a][1] = stringBuilder;
             }
+            System.out.println(stringBuilder.toString());
           }
           //tt = new TextTable(ColNames, data); //place data in table
           //tt.setAddRowNumbering(true);
           //tt.printTable(); //print out table to user
-            System.out.println(stringBuilder.toString());
         }
     }
-}

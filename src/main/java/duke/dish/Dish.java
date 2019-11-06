@@ -4,21 +4,28 @@ import duke.ingredient.Ingredient;
 import duke.ingredient.IngredientsList;
 import duke.storage.Printable;
 
-//@@ Author Hafidz
+/**
+ * @@author Hafidz
+ */
 public class Dish implements Printable {
 
     private String dishname;
     private IngredientsList ingredientsList;
 
     /**
-     * assigns dishname to name and instantiate ingredientList
-     * @param name assigns dishname to name
+     * assigns dishname to name and ingredientList to il
+     * @param name name of the dish
+     * @param il list of ingredient
      */
     public Dish(String name, IngredientsList il) {
         dishname = name;
         ingredientsList = il;
     }
 
+    /**
+     * assigns dishname to name and instantiate ingredientList
+     * @param name
+     */
     public Dish(String name) {
         this.dishname = name;
         this.ingredientsList = new IngredientsList();

@@ -74,6 +74,19 @@ public class Parser {
         }
     }
 
+    /**
+     * commands for Dish
+     * add: adds a dish to dishList
+     * remove: remove a dish from dishList
+     * list: list all dishes in list
+     * initialize: clears the list
+     * ingredient: add an ingredient to a dish
+     *
+     * @param fullCommand command from the user
+     * @return a command to be executed
+     * @throws DukeException
+     * @@@author Hafidz
+     */
     private static Command dish(String fullCommand) throws DukeException {
         String[] part = fullCommand.split(" ", 2);
         switch (part[0]) {
