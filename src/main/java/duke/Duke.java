@@ -7,6 +7,7 @@ import duke.command.ingredientCommand.RemoveAllExpired;
 import duke.dish.DishList;
 import duke.exception.DukeException;
 import duke.fridge.Fridge;
+import duke.ingredient.IngredientsList;
 import duke.order.OrderList;
 import duke.parser.Parser;
 import duke.storage.FridgeStorage;
@@ -61,7 +62,6 @@ public class Duke {
      */
     public void run() {
         String fullCommand;
-        //ui.clearScreen();
         ui.showWelcome();
 
         if (fridge.hasExpiredIngredients()) {
@@ -82,7 +82,6 @@ public class Duke {
                 ui.showOptions();
                 ui.showLine();
                 fullCommand = ui.readCommand();
-                //ui.clearScreen();
                 ui.showLine();
                 switch (fullCommand) {
                     case "options": {
@@ -91,19 +90,19 @@ public class Duke {
                     }
                     case "q": {
                         Command command = new ExitCommand();
-                        command.execute(null, dish, order, ui, fridgeStorage, orderStorage);
+                        command.execute(fridge, dish, order, ui, fridgeStorage, orderStorage);
                         isExit = command.isExit();
                         break;
                     }
                     case "t": {
                         Command command = new ViewTodoListCommand();
-                        command.execute(null, dish, order, ui, fridgeStorage, orderStorage);
+                        command.execute(fridge, dish, order, ui, fridgeStorage, orderStorage);
                         isExit = command.isExit();
                         break;
                     }
                     case "a": {
                         Command command = new RemoveAllExpired(fridge);
-                        command.execute(null, dish, order, ui, fridgeStorage, orderStorage);
+                        command.execute(fridge, dish, order, ui, fridgeStorage, orderStorage);
                         isExit = command.isExit();
                         break;
                     }
@@ -113,13 +112,12 @@ public class Duke {
                         while (true) {
                             try {
                                 fullCommand = ui.readCommand();
-                                //ui.clearScreen();
                                 if (fullCommand.trim().equals("back")) {
                                     break;
                                 }
                                 if (fullCommand.trim().equals("q")) {
                                     Command command = new ExitCommand();
-                                    command.execute(null, dish, order, ui, fridgeStorage, orderStorage);
+                                    command.execute(fridge, dish, order, ui, fridgeStorage, orderStorage);
                                     isExit = command.isExit();
                                     break;
                                 }
@@ -132,7 +130,7 @@ public class Duke {
                                     continue;
                                 }
                                 Command command = Parser.parse(fullCommand, Type.INGREDIENT);
-                                command.execute(null, dish, order, ui, fridgeStorage, orderStorage);
+                                command.execute(fridge, dish, order, ui, fridgeStorage, orderStorage);
                             } catch (DukeException e) {
                                 System.out.println(e.getLocalizedMessage());
                                 // e.printStackTrace();
@@ -146,7 +144,6 @@ public class Duke {
                         while (true) {
                             try {
                                 fullCommand = ui.readCommand();
-                                //ui.clearScreen();
                                 if (fullCommand.trim().equals("back")) { break; }
                                 if (fullCommand.trim().equals("q")) {
                                     Command command = new ExitCommand();
@@ -171,7 +168,6 @@ public class Duke {
                             try {
                                 ui.showDishTemplate();
                                 fullCommand = ui.readCommand();
-                                //ui.clearScreen();
                                 if(fullCommand.trim().equals("q")) {
                                     Command command = new ExitCommand();
                                     command.execute(null, dish, order, ui, fridgeStorage, orderStorage);
@@ -182,7 +178,6 @@ public class Duke {
                                     break;
                                 }
                                 if(fullCommand.trim().equals("template")) {
-                                    //ui.clearScreen();
                                     continue;
                                 }
                                 Command command = Parser.parse(fullCommand, Type.DISH);
