@@ -189,7 +189,7 @@ public class Duke {
                         break;
                     }
                     default:
-                        throw new DukeException("wrong input");
+                        System.out.println("OOPS!!! Wrong input!");
                 }
             } catch (DukeException e) {
                 ui.showError(e.getMessage());
