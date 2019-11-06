@@ -33,7 +33,7 @@ public class Dish implements Printable {
     }
 
     /**
-     *
+     * get the name of the dish
      * @return name of dish
      */
     public String getDishname() {

@@ -1,10 +1,13 @@
 package duke.storage;
 
 import duke.dish.Dish;
+import duke.dish.DishList;
 import duke.exception.DukeException;
 import duke.ingredient.Ingredient;
 import duke.ingredient.IngredientsList;
 import duke.list.GenericList;
+
+import java.util.List;
 
 public class RecipeStorage extends Storage<Dish> {
 
@@ -14,8 +17,9 @@ public class RecipeStorage extends Storage<Dish> {
      * @param fp used to specify the location of the file in the hard disc.
      * @@author CEGLincoln
      */
-    public RecipeStorage(String fp) {
+    public RecipeStorage(String fp) throws DukeException {
         super(fp);
+        entries = new DishList();
     }
 
     @Override

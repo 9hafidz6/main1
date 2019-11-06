@@ -533,9 +533,13 @@ Order Template
 
 | Index | Keyword | Usage | Description |
 | ----- | ------- | ----- | ----------- |
-| 1     |         |       |             |
-| 2     |         |       |             |
-| 3     |         |       |             |
+| 1     | init    |       |             |
+| 2     | add     |       |             |
+| 3     | alter   |       |             |
+| 4     | remove  |       |             |
+| 5     | done    |       |             |
+| 6     | list    |       |             |
+|       |         |       |             |
 
 Dish Template
 
