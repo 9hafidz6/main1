@@ -20,8 +20,7 @@ public class AddDishCommand extends Command {
         this.dish = dish;
     }
 
-    //@@ Author Hafidz
-
+    //@@ Author 9hafidz6
     /**
      * @param fridge
      * @param dishList
@@ -30,7 +29,6 @@ public class AddDishCommand extends Command {
      * @param fs
      * @param os
      * @throws DukeException
-     * @@@author Hafidz
      */
     @Override
     public void execute(Fridge fridge, DishList dishList, OrderList ol, Ui ui, FridgeStorage fs, OrderStorage os) throws DukeException {

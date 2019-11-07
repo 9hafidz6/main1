@@ -4,9 +4,8 @@ import duke.ingredient.Ingredient;
 import duke.ingredient.IngredientsList;
 import duke.storage.Printable;
 
-/**
- * @@author Hafidz
- */
+//@@author 9hafidz6
+
 public class Dish implements Printable {
 
     private String dishname;
@@ -45,6 +44,10 @@ public class Dish implements Printable {
      */
     public String getDishname() {
         return dishname;
+    }
+
+    public void changeName(String dishname) {
+        this.dishname = dishname;
     }
 
     /**

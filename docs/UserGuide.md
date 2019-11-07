@@ -5,8 +5,7 @@
 2. Quick Start
 
 3. Features
-<<<<<<< HEAD
-   
+
    3.1 Main Menu
    
    3.2 Dish
@@ -259,7 +258,7 @@ To begin with, the user needs to enter command `'a'- remove all expired` or `'b'
 
 #### 3.3.1 Adding Ingredient
 
-User needs to enter `b` in the menu first. To add an ingredient to the IngredientsList, user needs to execute command below:
+To add an ingredient to the IngredientsList, user needs to execute command below:
 
 To add an ingredient to the IngredientsList, the user needs to execute command below:
 
@@ -281,7 +280,7 @@ Examples:
 
 #### 3.3.2 Removing Ingredient
 
-User needs to enter `b` in the menu first. To remove an ingredient from the IngredientsList, user needs to execute command below:
+To remove an ingredient from the IngredientsList, user needs to execute command below:
 
 To remove an ingredient from the IngredientsList, the user needs to execute command below:
 
@@ -314,7 +313,7 @@ Examples:
 
 #### 3.3.3 Finding Ingredient
 
-User needs to enter `b` in the menu first. To find an ingredient from the IngredientsList, user needs to execute command below:
+To find an ingredient from the IngredientsList, user needs to execute command below:
 
 To find an ingredient from the IngredientsList, user needs to execute command below:
 
@@ -363,7 +362,7 @@ Also, once amount reaches 0, the ingredient will be deleted off from the Ingredi
 
 #### 3.3.5 Listing all expired ingredients on the date itself
 
-User needs to enter `b` in the menu first. To list all expired ingredient from the IngredientsList on the date itself, user needs to execute command below:
+To list all expired ingredient from the IngredientsList on the date itself, user needs to execute command below:
 
 To list all expired ingredient from the IngredientsList on the date itself, user needs to execute command below:
 
@@ -401,12 +400,6 @@ Otherwise,
 	Removed:  ingredients: 
 	salt, amount is: 50 expired on 31st of October 2019
 ```
-
-#### 3.3.5 Using an ingredient 
-
-User needs to enter `b` in the menu first. To use an ingredient from the IngredientsList, user needs to execute command below:
-
-### 
 
 ### 3.4 Order Management
 
@@ -655,26 +648,16 @@ ________________________________________________________________________________
 
 
 
-### 3.4 Fridge commands
+### 3.6 Fridge commands
 
-#### 3.4.1 Add an ingredient to the Fridge
-#### 3.4.2 Remove an ingredient from the fridge
-#### 3.4.3 Use an ingredient from the fridge
-#### 3.4.4 Remove all expired ingredients from the fridge
+#### 3.6.1 Add an ingredient to the Fridge
+#### 3.6.2 Remove an ingredient from the fridge
+#### 3.6.3 Use an ingredient from the fridge
+#### 3.6.4 Remove all expired ingredients from the fridge
+
+### 3.7 stats: gives the statistics of the Dish
 
 
-
-### 3.6 stats: gives the statistics of the Dish
-
-### 3.7 order: creates a new order 
-
-### 3.8 preorder: 
-
-### 3.9 help: shows a list of commands to the user 
-
-things to include in version 2:
-
-...
 
 ## 4. Command Summary
 
@@ -703,15 +686,18 @@ Ingredient template
 
 Order Template
 
-| Index | Keyword | Usage | Description |
-| ----- | ------- | ----- | ----------- |
-| 1     | init    |       |             |
-| 2     | add     |       |             |
-| 3     | alter   |       |             |
-| 4     | remove  |       |             |
-| 5     | done    |       |             |
-| 6     | list    |       |             |
-|       |         |       |             |
+| Index | Keyword | Usage                            | Description |
+| ----- | ------- | -------------------------------- | ----------- |
+| 1     | add     | add -d <date> -n <desc>*<amount> |             |
+| 2     | alter   | alter <index> <date>             |             |
+| 3     | remove  | remove <index>                   |             |
+| 4     | done    | done <index>                     |             |
+| 5     | init    | init                             |             |
+| 6     | list    | list -l <option>                 |             |
+| 7     | list    | list -n <desc>                   |             |
+| 8     | list    | list -d <date> -l <option>       |             |
+
+for <option>, (option: all (default) | undone | today | undoneToday)
 
 Dish Template
 
@@ -737,4 +723,4 @@ common commands in template
 
 Q: how do I transfer data to another computer 
 
-A: install the application on the other computer and an empty recipe.txt will be created under the data folder. Replace this file with the same file found in your previous computer. therefore your data will be transferred  
+A: install the application on the other computer and an empty recipe.txt will be created under the data folder. Replace this file with the same txt file found in your previous computer. therefore your data will be transferred. 
