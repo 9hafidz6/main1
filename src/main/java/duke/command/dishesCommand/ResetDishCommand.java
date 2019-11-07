@@ -11,6 +11,20 @@ import duke.ui.Ui;
 
 public class ResetDishCommand extends Command {
 
+    /**
+     * this method clears the list, the program asks the user whether they want the list to be cleared
+     * user can enter y or n, yes or no.
+     *
+     * @param fridge
+     * @param dishList
+     * @param ol
+     * @param ui
+     * @param fs
+     * @param os
+     * @throws DukeException
+     *
+     * @author Hafidz
+     */
     @Override
     public void execute(Fridge fridge, DishList dishList, OrderList ol, Ui ui, FridgeStorage fs, OrderStorage os) throws DukeException {
         System.out.println("\t are you sure you want to clear list? [y/n]");

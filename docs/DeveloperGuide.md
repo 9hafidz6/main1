@@ -263,9 +263,11 @@ this component allows the chef to add dishes to the current menu, remove it and 
 
 - **<u>InitCommand</u>**
 
-  
+  user intends to clear the dishList. thus user enters `initialize` which will clear the dishList
 
 - **<u>ListDishCommand</u>**
+
+  user intends to list all the dishes in the dishList. for each dish in the list, there are also ingredients associated to it. hence, this command prints all the dishes as well as the ingredients associated to it.
 
 ![dishesCommand](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishesCommand.PNG)
 
@@ -493,11 +495,11 @@ Target user profile: Restaurant Chef
 | Medium   | restaurant manager | I want to keep track of my company meetings                  | I am able to organize all my employees               |
 | Low      | restaurant manager | note down customer feedbacks regarding dishes                | I can tell if my recipe is doing well or not         |
 | Low      | restaurant manager | I want to keep track of holiday dates                        | I can prepare for special food menus                 |
-|          | restaurant Chef    | a list to keep all my recipes                                | i can refer to them if needed                        |
-|          | restaurant Chef    | maintain all the ingredients in the kitchen                  | there are ample supply and no expired ingredient     |
-|          | restaurant Chef    |                                                              |                                                      |
-|          | restaurant Chef    |                                                              |                                                      |
-|          | restaurant Chef    |                                                              |                                                      |
+| high     | restaurant Chef    | a list to keep all my recipes                                | i can refer to them if needed                        |
+| high     | restaurant Chef    | keep track of all the ingredients in the kitchen             | there are ample supply and no expired ingredient     |
+| high     | restaurant Chef    |                                                              |                                                      |
+| high     | restaurant Chef    |                                                              |                                                      |
+| high     | restaurant Chef    |                                                              |                                                      |
 
 ### Appendix C: Use Case
 
@@ -523,7 +525,7 @@ Target user profile: Restaurant Chef
 
 **Use case:  Show all the tasks**
 
-​	1. User requests to view all the existing tasks
+​	1. User requests to view all the existing todo list
 
 ​	2. Program loads up the lists of existing tasks
 
@@ -531,7 +533,7 @@ Target user profile: Restaurant Chef
 
 **Extensions**
 
-- 2a. Task List is empty
+- 2a. todoList is empty
 
 ​		Use case ends.
 
@@ -543,11 +545,11 @@ Target user profile: Restaurant Chef
 
 
 
-**Use case: Mark a task as done**
+**Use case: Mark a order as done**
 
-​	1. User requests to mark a task as done
+​	1. User requests to mark order as done
 
-​	2. Program marks the task as done
+​	2. Program marks the order as done
 
 ​		Use case ends.
 
@@ -567,11 +569,11 @@ Target user profile: Restaurant Chef
 
 
 
-**Use case: Create a new todo task**
+**Use case: Create a new order**
 
-​	1. User requests to add a new todo task
+​	1. User requests to add a new order
 
-​	2. Program adds new todo task to Task List
+​	2. Program adds new order to order List
 
 ​		Use case ends.
 
@@ -585,11 +587,11 @@ Target user profile: Restaurant Chef
 
 
 
-**Use case: Create a new deadline task**
+**Use case: Create a new dish**
 
-1. User requests to add a new deadline task
+1. User requests to add a new dish
 
-2. Program adds new deadline task to Task List
+2. Program adds new deadline dish to dish List
 
    Use case ends.
 
@@ -603,11 +605,11 @@ Target user profile: Restaurant Chef
 
 
 
-**Use case: Create a new event task**
+**Use case: Create a new ingredient**
 
-​	1. User request to add a new event task
+​	1. User request to add a new ingredient
 
-​	2. Program adds a new event task to Task List
+​	2. Program adds a new event ingredient to ingredient List
 
 ​		Use case ends.
 
@@ -621,15 +623,15 @@ Target user profile: Restaurant Chef
 
 
 
-**Use case: Find a task by searching for keyword**
+**Use case: Find a ingredient by searching for keyword**
 
 1. User requests to find tasks with the given keyword
 
-2. Program loads up and shows tasks with the given keyword
+2. Program loads up and shows ingredient with the given keyword
 
 **Extensions**
 
-- 2a. Task List is empty
+- 2a. ingredient List is empty
 
   - Program prompts for correct syntax
 
@@ -655,8 +657,24 @@ Target user profile: Restaurant Chef
 
 1. 
 
-### Appendix F: Product Survey
+### Appendix F: Instruction for Manual Testing 
 
+1. Ensure you have Java `11` or above installed in your Computer.
+2. Download the latest Duke.jar [here](https://github.com/AY1920S1-CS2113-T14-2/main/releases).
+3. Copy the file to the folder you want to use as the home folder for your Duke application.
+4. Use the command prompt and navigate to the path where the application is downloaded `cd ../FILEPATH`
+5. run the command `java -jar v1.4` , application will then be executed 
 
+initially you are greeted with the main page, if there are expired ingredients in the fridge, the program will alert the user to clear the items. user can either enter `yes` or `no`. if user enters yes, all expired ingredients will be cleared. if user enters no, the ingredients will remain.
 
-### Appendix G: Instruction for Manual Testing 
+in the main page, there are several actions for the user:
+
+| Index | Keyword | Usage   | Description                 |
+| ----- | ------- | ------- | --------------------------- |
+| 1     | options | options | show options                |
+| 2     | q       | q       | exit program                |
+| 3     | t       | t       | view todo list              |
+| 4     | a       | a       | remove expired ingredients  |
+| 5     | b       | b       | go into ingredient template |
+| 6     | c       | c       | go into order template      |
+| 7     | d       | d       | go into dish template       |

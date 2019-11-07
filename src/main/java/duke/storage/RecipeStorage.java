@@ -20,7 +20,6 @@ public class RecipeStorage extends Storage<Dish> {
      */
     public RecipeStorage(String fp) throws DukeException {
         super(fp);
-        entries = new DishList();
     }
 
     @Override
@@ -30,13 +29,12 @@ public class RecipeStorage extends Storage<Dish> {
             //module Parse
             String name = words[0];
             IngredientsList ilst = new IngredientsList();
+            String desc = "";
             for (int i=0; i<words.length; i++) {
-                String desc = "";
                 int amnt;
                 if (i%2 == 1) {
                     //If i is odd, it would be the name of the ingredient
                     desc = words[i];
-
                 }
                 else if (i>1) {
                     //If i is even, it would be the amount of said ingredient
