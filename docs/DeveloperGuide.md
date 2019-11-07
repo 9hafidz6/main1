@@ -434,6 +434,17 @@ The Recipebook contains 2 classes, Ingredient and IngredientsList.
 
 #### 2.10 Fridge Component
 API: `Fridge.java`
+<<<<<<< HEAD
+
+The Fridge class allows access and modification of the `Ingredient`s used by the chef. By keeping track of the Ingredients' expiry date, it allows the user to know which products have expired, and remove them. It allows for less ingredient waste, as it can return the most recently expiring ingredients, so that they can be used first. 
+
+![Fridge](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/fridgeUML.png)
+
+#### 2.11 GenericList
+
+This abstract class allows for creation of different types of lists, and basic list entry manipulations. It is extended by multiple classes, including `IngredientsList.java`, `TaksList.java`, `OrderList.java` and `DishList.java`. All of these classes inherit the basic methods from the Generic List and extend it with their specific methods, eg.  `allUndoneOrders()` from`OrderList.java`, or `changeAmount()` from `IngredientsList.java`. A UML Class Diagram is shown below.
+
+![GenericList](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/GenericListUML.png)
 
 The Fridge class allows access and modification of the `Ingredient`s used by the chef. By keeping track of the Ingredients' expiry date, it allows the user to know which products have expired, and remove them. It allows for less ingredient waste, as it can return the most recently expiring ingredients, so that they can be used first. 
 
@@ -730,7 +741,7 @@ in the main page, there are several actions for the user:
    1. Download Jar file and copy into empty folder
    2. open command prompt and navigate to that `FILEPATH` and run `java -jar v1.4`. 
    3. resize window if size is not optimum
-   4. enter `q` to close the program or close the window
+   4. enter `q` to close the program or close the window
 
 #### E1. Adding an ingredient
 
@@ -770,23 +781,23 @@ in the main page, there are several actions for the user:
 
 1. removing a dish from the dishList
 
-   1. prerequisite: list all dishes  using `list`, eg the size dishList is more than 0 less than 100 
+      1. prerequisite: list all dishes  using `list`, eg the size dishList is more than 0 less than 100 
 
-   2. Test case 1: `remove 1`
+      2. Test case 1: `remove 1`
 
-      Expected: deletes the first dish in the list, outputs the details of the deleted dish to the user 
+         Expected: deletes the first dish in the list, outputs the details of the deleted dish to the user 
 
-   3. Test case 2: `remove`
+      3. Test case 2: `remove`
 
-      Expected: no dish is deleted. outputs to the user to enter a valid index
+         Expected: no dish is deleted. outputs to the user to enter a valid index
 
-   4. Test case 3: `remove two`
+      4. Test case 3: `remove two`
 
-      Expected: no dish is deleted. output to the user to enter alternative command 
+         Expected: no dish is deleted. output to the user to enter alternative command 
 
-   5. Test case 4: `remove 101`
+      5. Test case 4: `remove 101`
 
-      Expected: no dish is deleted. outputs to the user that the dish does not exist 
+         Expected: no dish is deleted. outputs to the user that the dish does not exist 
 
 #### E12. Adding an ingredient to a dish
 
@@ -819,3 +830,13 @@ in the main page, there are several actions for the user:
    3. Test case 2: `find`
 
       Expected: 
+=======
+   1. prerequisite: list all dishes  using `list`, eg the size 
+
+   2. Test case 1: `remove 1`
+
+      Expected: deletes the first dish in the list, 
+
+#### E12. Adding an ingredient to a dish
+
+#### E13.
