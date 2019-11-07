@@ -243,19 +243,7 @@ this component allows the chef to add dishes to the current menu, remove it and 
   
   user enters the command `addish chicken rice /num 2` which denotes adding the dish called chicken rice into the dishList. the program will enter the AddDishCommand class and executes the method below.
   
-  ```java
-              if(dishList.size() == 0) {
-                  dishList.addEntry(dish);
-                  dishList.getEntry(0).setNumberOfOrders(amount);
-                  ui.showAddedDishes(dish.getDishname(), amount);
-              }
-  ```
-  
-  
-  
   If the dishList is empty(size of dishList is 0), immediately add the dish into the dishList. however, if the dishList is not empty, the program will need to go through the entire dishList to check if the dish has already been added. this is done so that there are no duplicate dishes.
-  
-  
   
   once the dish is added to the dishList, the method will use the Ui class with method call ui.showAddedDishes() as a reply to the user that the dish has been successfully added into the list.
   
@@ -263,9 +251,19 @@ this component allows the chef to add dishes to the current menu, remove it and 
   
 - **<u>AddIngredient</u>**
 
+  user intends to add an ingredient to a certain dish in dishList. thus user enters `ingredient rice 100 1` which denotes adding an ingredient called rice with a amount of 100g to the index of the dish. in this case the index is 1. 
+
+  if any of the description is empty, an exception will be thrown to inform the user. 
+
 - **<u>DeleteDishCommand</u>**
 
+  user intends to remove a dish in dishList. thus user enters `remove 1` which denotes removing a dish of index 1 from the dishList. 
+
+  if there is no such dish with user keyed index, an exception will be thrown to the user.
+
 - **<u>InitCommand</u>**
+
+  
 
 - **<u>ListDishCommand</u>**
 
@@ -476,9 +474,11 @@ The ingredientCommand classes inherits from the `Command` class. They overwrite 
 Target user profile: Restaurant Chef
 
 - needs to manage all the ingredients for his dishes  
-- prefers a desktop application with GUI
+- needs to keep track of orders 
+- needs to manage ingredients in the fridge
+- 
+- prefers a desktop application, CLI
 - prefers to keep everything neat in terms of viewing information
-- can also use CLI if needed
 ### Appendix B: User Stories
 
 ​	Priorities: High (must have), Medium (nice to have), Low (may not have)
@@ -493,6 +493,11 @@ Target user profile: Restaurant Chef
 | Medium   | restaurant manager | I want to keep track of my company meetings                  | I am able to organize all my employees               |
 | Low      | restaurant manager | note down customer feedbacks regarding dishes                | I can tell if my recipe is doing well or not         |
 | Low      | restaurant manager | I want to keep track of holiday dates                        | I can prepare for special food menus                 |
+|          | restaurant Chef    | a list to keep all my recipes                                | i can refer to them if needed                        |
+|          | restaurant Chef    | maintain all the ingredients in the kitchen                  | there are ample supply and no expired ingredient     |
+|          | restaurant Chef    |                                                              |                                                      |
+|          | restaurant Chef    |                                                              |                                                      |
+|          | restaurant Chef    |                                                              |                                                      |
 
 ### Appendix C: Use Case
 

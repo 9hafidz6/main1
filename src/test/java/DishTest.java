@@ -1,12 +1,19 @@
+import duke.command.dishesCommand.AddDishCommand;
+import duke.dish.Dish;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DishTest {
 
     @Test
     public void putDish() {
-        assertEquals();
+        Dish dish = new Dish("chicken rice");
+        assertEquals("chicken rice", new AddDishCommand(dish));
     }
 
-    private void assertEquals() {
+    @Test
+    public void removeDish() {
+
     }
 }
