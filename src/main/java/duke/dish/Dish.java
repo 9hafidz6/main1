@@ -65,7 +65,7 @@ public class Dish implements Printable {
     public String toString() {
         String str = "Recipe for " + dishname;
         for (Ingredient i : ingredientsList.getAllEntries()) {
-            str += "\n" + i.getName() + ", " + i.getAmount();
+            str += "\n\t " + i.getName() + ", " + i.getAmount();
         }
         return str; //Multi-line depending on the size of ingredient list
     }

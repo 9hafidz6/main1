@@ -690,7 +690,7 @@ Target user profile: Restaurant Chef
 
 ### Appendix D: Non Functional Requirement
 
-1. should work on any windows OS as long it has `java 11` or newer installed 
+1. should work on any windows or Mac OS as long it has `java 11` or newer installed 
 2. The application needs to be secure. only specific users are able to access this application. for example, the restaurant manager as well as the chef
 3. should be reliable in displaying accurate and correct data 
 4. should be easy to use for users with basic knowledge of command line interface
@@ -770,12 +770,52 @@ in the main page, there are several actions for the user:
 
 1. removing a dish from the dishList
 
-   1. prerequisite: list all dishes  using `list`, eg the size 
+   1. prerequisite: list all dishes  using `list`, eg the size dishList is more than 0 less than 100 
 
    2. Test case 1: `remove 1`
 
-      Expected: deletes the first dish in the list, 
+      Expected: deletes the first dish in the list, outputs the details of the deleted dish to the user 
+
+   3. Test case 2: `remove`
+
+      Expected: no dish is deleted. outputs to the user to enter a valid index
+
+   4. Test case 3: `remove two`
+
+      Expected: no dish is deleted. output to the user to enter alternative command 
+
+   5. Test case 4: `remove 101`
+
+      Expected: no dish is deleted. outputs to the user that the dish does not exist 
 
 #### E12. Adding an ingredient to a dish
 
-#### E13.
+1. associating an ingredient to a dish in the dishList	
+
+   1. prerequisite: list all dishes using `list`, eg size of dishList is more than 0 and less than 100
+
+   2. Test case 1: `ingredient rice 50 1`
+
+      Expected: adds an ingredient rice of 50g to dish of index 1 in dishList. outputs message to user, added ingredient rice to dish.
+
+   3. Test case 2: `ingredient`
+
+      Expected: no ingredient is added to a dish. outputs message to user that description cannot be empty
+
+   4. Test case 3: `ingredient rice`
+
+      Expected: no ingredient is added to a dish. outputs message to user that index/amount needs to be valid
+
+#### E13. Finding a dish
+
+1. finding a dish in list given a keyword
+
+   1. prerequisite: list all dishes using `list`
+
+   2. Test case 1: `find rice`
+
+      Expected: find all dishes that contains the keyword rice and output to user
+
+   3. Test case 2: `find`
+
+      Expected: 

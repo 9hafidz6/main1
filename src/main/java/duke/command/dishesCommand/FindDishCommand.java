@@ -37,6 +37,7 @@ public class FindDishCommand extends Command {
             if(dishList.getEntry(a).getDishname().contains(dishname)) {
                 flag = false;
                 System.out.println("\t index:" + (a+1) + "\t dish:" + dishList.getEntry(a).getDishname());
+                System.out.println("\t " + dishList.getEntry(a).toString());
             }
         }
         if(flag) {
