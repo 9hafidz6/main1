@@ -20,6 +20,7 @@ public class RecipeStorage extends Storage<Dish> {
      */
     public RecipeStorage(String fp) throws DukeException {
         super(fp);
+        entries = new DishList();
     }
 
     @Override

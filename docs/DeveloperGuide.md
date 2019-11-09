@@ -88,16 +88,16 @@ The Ui class consists of methods that outputs messages to the user as a response
 
 The Ui component contains all the messages or replies whenever the User enters a command for example if the user enters:
 
-`dishadd chicken rice /num 2`
+`add chicken rice`
 
-`dishdelete 1`
+`remove 1`
 
 The Ui will reply to the User with the following messages:
 
 ```
 	 ____________________________________________________________
 	 you have added the following dish: 
-	 chicken rice 	amount: 2
+	 chicken rice 
 	 ____________________________________________________________
 ```
 
@@ -171,7 +171,9 @@ The Command class is used as an abstract class for other classes, its method `ex
   - AddDishCommand
   - DeleteDishCommand
   - ListDishCommand
-  - InitCommand
+  - FindDishCommand
+  - ChangeDishCommand
+  - ResetCommand
   - AddIngredient
 - OrderCommand
   - AddOrderCommand
@@ -200,6 +202,8 @@ API: `Parser.java`
 makes sense of the data that is read by the user from the Duke Class. 
 
 this component gets the command from the user through the Duke Class. This component will then make sense of the command by splitting the command into different parts as well as determining the command type.
+
+
 
 depending on the content of the splitted value and command type, Parser class will execute different commands.
 #### 2.5 Storage Component
@@ -434,7 +438,7 @@ The Recipebook contains 2 classes, Ingredient and IngredientsList.
 
 #### 2.10 Fridge Component
 API: `Fridge.java`
-<<<<<<< HEAD
+
 
 The Fridge class allows access and modification of the `Ingredient`s used by the chef. By keeping track of the Ingredients' expiry date, it allows the user to know which products have expired, and remove them. It allows for less ingredient waste, as it can return the most recently expiring ingredients, so that they can be used first. 
 
@@ -455,10 +459,6 @@ The Fridge class allows access and modification of the `Ingredient`s used by the
 This abstract class allows for creation of different types of lists, and basic list entry manipulations. It is extended by multiple classes, including `IngredientsList.java`, `TaksList.java`, `OrderList.java` and `DishList.java`. All of these classes inherit the basic methods from the Generic List and extend it with their specific methods, eg.  `allUndoneOrders()` from`OrderList.java`, or `changeAmount()` from `IngredientsList.java`. A UML Class Diagram is shown below.
 
 ![GenericList](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/GenericListUML.png)
-
-##### <u>Ingredient Class</u>
-
-
 
 ##### <u>Ingredient Class</u>
 
@@ -534,7 +534,7 @@ Target user profile: Restaurant Chef
 - needs to manage all the ingredients for his dishes  
 - needs to keep track of orders 
 - needs to manage ingredients in the fridge
-- 
+- needs to manage dishes in recipe book 
 - prefers a desktop application, CLI
 - prefers to keep everything neat in terms of viewing information
 ### Appendix B: User Stories
@@ -763,7 +763,7 @@ in the main page, there are several actions for the user:
 
 1. adding a dish to the dishList
 
-   1. prerequisite: list all dishes using `list` 
+   1. prerequisite: user must be in `dish` template. list all dishes using `list` 
 
    2. Test case 1: `add chicken rice`
 
@@ -781,7 +781,7 @@ in the main page, there are several actions for the user:
 
 1. removing a dish from the dishList
 
-      1. prerequisite: list all dishes  using `list`, eg the size dishList is more than 0 less than 100 
+      1. prerequisite: user must be in `dish` template. list all dishes  using `list`, eg the size dishList is more than 0 less than 100 
 
       2. Test case 1: `remove 1`
 
@@ -803,7 +803,7 @@ in the main page, there are several actions for the user:
 
 1. associating an ingredient to a dish in the dishList	
 
-   1. prerequisite: list all dishes using `list`, eg size of dishList is more than 0 and less than 100
+   1. prerequisite: user must be in `dish` template. list all dishes using `list`, eg size of dishList is more than 0 and less than 100
 
    2. Test case 1: `ingredient rice 50 1`
 
@@ -821,7 +821,7 @@ in the main page, there are several actions for the user:
 
 1. finding a dish in list given a keyword
 
-   1. prerequisite: list all dishes using `list`
+   1. prerequisite: user must be in `dish` template. user must be in `dish` template. list all dishes using `list`
 
    2. Test case 1: `find rice`
 
@@ -830,12 +830,11 @@ in the main page, there are several actions for the user:
    3. Test case 2: `find`
 
       Expected: 
-=======
-   1. prerequisite: list all dishes  using `list`, eg the size 
-
-   2. Test case 1: `remove 1`
-
-      Expected: deletes the first dish in the list, 
+1. prerequisite: list all dishes  using `list`, eg the size 
+   
+2. Test case 1: `remove 1`
+   
+   Expected: deletes the first dish in the list, 
 
 #### E12. Adding an ingredient to a dish
 
