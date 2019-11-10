@@ -13,6 +13,7 @@ import duke.ui.Ui;
 public class ResetDishCommand extends Command {
 
     //@@author Hafidz
+    //@@author CEGLincoln
     /**
      * this method clears the list, the program asks the user whether they want the list to be cleared
      * user can enter y or n, yes or no.
