@@ -4,21 +4,21 @@
 
 2. Design 
 
-   1. Architecture
-   2. UI
-   3. Command Component
-   4. Parser Component
-   5. Storage Component
-   7. Exception Component
-   8. Dish Component
-   9. DishesCommand Component
-   10. Order Component
-   11. OrderCommand Component
-   12. Fridge Component
-   13. GenericList
-   14. Ingredient
-   15. ingredientCommand Component
-   16. Statistics
+   - Architecture
+   - UI
+   - Command Component
+   - Parser Component
+   - Storage Component
+   - Exception Component
+   - Dish Component
+   - DishesCommand Component
+   - Order Component
+   - OrderCommand Component
+   - Fridge Component
+   - GenericList
+   - Ingredient
+   - ingredientCommand Component
+   - Statistics
    
 3. Implementation
 
