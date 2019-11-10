@@ -1,70 +1,70 @@
 # Chef Duke - Developer Guide
 
-1. Setting Up
+Setting Up
 
-2. Design 
+Design 
 
-   - Architecture
-   - UI
-   - Command Component
-   - Parser Component
-   - Storage Component
-   - Exception Component
-   - Dish Component
-   - DishesCommand Component
-   - Order Component
-   - OrderCommand Component
-   - Fridge Component
-   - GenericList
-   - Ingredient
-   - ingredientCommand Component
-   - Statistics
-   
-3. Implementation
+- Architecture
+- UI
+- Command Component
+- Parser Component
+- Storage Component
+- Exception Component
+- Dish Component
+- DishesCommand Component
+- Order Component
+- OrderCommand Component
+- Fridge Component
+- GenericList
+- Ingredient
+- ingredientCommand Component
+- Statistics
 
-4. Documentation
+Implementation
 
-5. Testing
+Documentation
 
-6. Dev Ops
+Testing
 
-   Appendix A: Product Scope
+Dev Ops
 
-   Appendix B: User Stories
+Appendix A: Product Scope
 
-   Appendix C: Use Cases
+Appendix B: User Stories
 
-   Appendix D: Non Functional Requirements 
+Appendix C: Use Cases
 
-   Appendix E: Instructions for Manual
+Appendix D: Non Functional Requirements 
 
-   ​	E1. launch and shutdown
-   
-   ​	E2. adding an ingredient 
-   
-   ​	E3. finding an ingredient
-   
-   ​	E4. remove an ingredient
-   
-   ​	E5. adding an order
-   
-   ​	E6. marking order as done
-   
-   ​	E7. altering order
-   
-   ​	E8. removing order
-   
-   ​	E9. adding a dish
-   
-   ​	E10. removing a dish
-   
-   ​	E11. adding an ingredient to a dish
-   
-   ​	E12. finding a dish 
-   
-   ​	E13. changing the name of a dish
-   
-   ​	
+Appendix E: Instructions for Manual
+
+​	E1. launch and shutdown
+
+​	E2. adding an ingredient 
+
+​	E3. finding an ingredient
+
+​	E4. remove an ingredient
+
+​	E5. adding an order
+
+​	E6. marking order as done
+
+​	E7. altering order
+
+​	E8. removing order
+
+​	E9. adding a dish
+
+​	E10. removing a dish
+
+​	E11. adding an ingredient to a dish
+
+​	E12. finding a dish 
+
+​	E13. changing the name of a dish
+
+​	
 
 ### 1. Setting Up
 
