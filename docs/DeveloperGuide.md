@@ -1,8 +1,70 @@
 # Chef Duke - Developer Guide
 
-[TOC]
+1. Setting Up
 
+2. Design 
 
+   1. Architecture
+   2. UI
+   3. Command Component
+   4. Parser Component
+   5. Storage Component
+   7. Exception Component
+   8. Dish Component
+   9. DishesCommand Component
+   10. Order Component
+   11. OrderCommand Component
+   12. Fridge Component
+   13. GenericList
+   14. Ingredient
+   15. ingredientCommand Component
+   16. Statistics
+   
+3. Implementation
+
+4. Documentation
+
+5. Testing
+
+6. Dev Ops
+
+   Appendix A: Product Scope
+
+   Appendix B: User Stories
+
+   Appendix C: Use Cases
+
+   Appendix D: Non Functional Requirements 
+
+   Appendix E: Instructions for Manual
+
+   ​	E1. launch and shutdown
+   
+   ​	E2. adding an ingredient 
+   
+   ​	E3. finding an ingredient
+   
+   ​	E4. remove an ingredient
+   
+   ​	E5. adding an order
+   
+   ​	E6. marking order as done
+   
+   ​	E7. altering order
+   
+   ​	E8. removing order
+   
+   ​	E9. adding a dish
+   
+   ​	E10. removing a dish
+   
+   ​	E11. adding an ingredient to a dish
+   
+   ​	E12. finding a dish 
+   
+   ​	E13. changing the name of a dish
+   
+   ​	
 
 ### 1. Setting Up
 
@@ -289,7 +351,7 @@ AddDishCommand, AddIngredient, DeleteDishCommand, ListDishCommand, ResetDishComm
   
 - **<u>AddIngredient</u>**
 
-  user intends to add an ingredient to a certain dish in dishList. this command takes in a description which is the ingredient name, amount and index. thus user enters `ingredient rice 100 1` which denotes adding an ingredient called rice with a amount of 100g to the index of the dish. in this case the index is 1. this command will then call the method`addIngredient` from the Dish class. in this method, it will iterate through the ingredient list to check for duplicates. if there are duplicates, same name and same amount, notify the user that the ingredient already exist. if the name of the ingredient is the same but amount is different, it only change the amount to the new amount. 
+  user intends to add an ingredient to a certain dish in dishList. this command takes in a description which is the ingredient name, amount and index. thus user enters `ingredient rice 100 1` which denotes adding an ingredient called rice with a amount of 100g to the index of the dish. in this case the index is 1. this command will then call the method`addIngredient` from the Dish class. in this method, it will iterate through the ingredient list to check for duplicates. if there are duplicates, same name and same amount, notify the user that the ingredient already exist. if the name of the ingredient is the same but amount is different, it only change the amount to the new amount. 
 
   if any of the description is empty, an exception will be thrown to inform the user. 
 
@@ -309,13 +371,13 @@ AddDishCommand, AddIngredient, DeleteDishCommand, ListDishCommand, ResetDishComm
   
 - **<u>FindDishCommand</u>**
 
-  user intends to find a dish in the dishList by keyword. user enters `find rice`, which denotes to list all the dishes which has the string rice in the name. this command takes in a String keyword and it will iterate through the dishList to find all the dishes that contain the keyword given by user. 
+  user intends to find a dish in the dishList by keyword. user enters `find rice`, which denotes to list all the dishes which has the string rice in the name. this command takes in a String keyword and it will iterate through the dishList to find all the dishes that contain the keyword given by user. 
 
   it will then print out the dish as well as the ingredient list of the dish to the user.
 
 - **<u>ChangeDishCommand</u>**
 
-  user intends to change the name of the dish. user needs to enter `change 1 chicken noodle` which denotes changing name if dish at index 1 to chicken noodle. this command takes in an integer index and string which is the new dish name. it will then change the name of the dish in dishList by the index to the new name.
+  user intends to change the name of the dish. user needs to enter `change 1 chicken noodle` which denotes changing name if dish at index 1 to chicken noodle. this command takes in an integer index and string which is the new dish name. it will then change the name of the dish in dishList by the index to the new name.
 
 ![dishesCommand](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishesCommand.PNG)
 
@@ -708,11 +770,7 @@ Target user profile: Restaurant Chef
 4. should be easy to use for users with basic knowledge of command line interface
 5. should be able to handle large amounts of data without displaying any slowdown in application performance 
 
-### Appendix E: Glossary 
-
-1. 
-
-### Appendix F: Instruction for Manual Testing 
+### Appendix E: Instruction for Manual Testing 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 2. Download the latest Duke.jar [here](https://github.com/AY1920S1-CS2113-T14-2/main/releases).
@@ -734,7 +792,7 @@ in the main page, there are several actions for the user:
 | 6     | c       | c       | go into order template      |
 | 7     | d       | d       | go into dish template       |
 
-#### E2. Launch and shutdown
+#### E1. Launch and shutdown
 
 1. Initial Launch
    1. Download Jar file and copy into empty folder
@@ -742,23 +800,23 @@ in the main page, there are several actions for the user:
    3. resize window if size is not optimum
    4. enter `q` to close the program or close the window
 
-#### E1. Adding an ingredient
+#### E2. Adding an ingredient
 
 1. Adding an ingredient to the List
 
-#### E4. Finding an ingredient
+#### E3. Finding an ingredient
 
-#### E5. Remove an ingredient
+#### E4. Remove an ingredient
 
-#### E6. Adding an order
+#### E5. Adding an order
 
-#### E7. Marking order as done
+#### E6 Marking order as done
 
-#### E8. Altering order
+#### E7. Altering order
 
-#### E9. Removing order
+#### E8. Removing order
 
-#### E10. Adding a dish
+#### E9. Adding a dish
 
 1. adding a dish to the dishList
 
@@ -776,7 +834,7 @@ in the main page, there are several actions for the user:
 
       Expected: output message to user that the description cannot be empty
 
-#### E11. Removing a dish
+#### E10. Removing a dish
 
 1. removing a dish from the dishList
 
@@ -798,7 +856,7 @@ in the main page, there are several actions for the user:
 
          Expected: no dish is deleted. outputs to the user that the dish does not exist 
 
-#### E12. Adding an ingredient to a dish
+#### E11. Adding an ingredient to a dish
 
 1. associating an ingredient to a dish in the dishList	
 
@@ -816,7 +874,7 @@ in the main page, there are several actions for the user:
 
       Expected: no ingredient is added to a dish. outputs message to user that index/amount needs to be valid
 
-#### E13. Finding a dish
+#### E12. Finding a dish
 
 1. finding a dish in list given a keyword
 
@@ -835,7 +893,7 @@ in the main page, there are several actions for the user:
    
    Expected: deletes the first dish in the list, 
 
-#### E12. Changing name of a dish
+#### E13. Changing name of a dish
 
 1. changing the name of a dish in list
 
