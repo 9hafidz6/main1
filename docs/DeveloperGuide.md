@@ -1,32 +1,60 @@
 # Chef Duke - Developer Guide
 
-Setting Up
+1. Setting Up
 
-Design 
+2. Design 
 
-- Architecture
-- UI
-- Command Component
-- Parser Component
-- Storage Component
-- Exception Component
-- Dish Component
-- DishesCommand Component
-- Order Component
-- OrderCommand Component
-- Fridge Component
-- GenericList
-- Ingredient
-- ingredientCommand Component
-- Statistics
+   2.1 Architecture
 
-Implementation
+   2.2 UI
 
-Documentation
+   2.3Command Component
 
-Testing
+   2.4 Parser Component
 
-Dev Ops
+   2.5 Storage Component
+
+   ​	2.5.1 FridgeStorage
+
+   ​	2.5.2 OrderStorage
+
+   ​	2.5.3 RecipeStorage
+
+   2.6 GenericList
+
+   ​	2.6.1 IngredientList
+
+   ​	2.6.2 OrderList
+
+   ​	2.6.3 DishList
+
+   2.7 Exception Component
+
+   2.8 Dish Component
+
+   2.9 DishesCommand Component
+
+   2.10 Order Component
+
+   2.11 OrderCommand Component
+
+   2.12 Fridge Component
+
+   2.13 GenericList
+
+   2.14 Ingredient
+
+   2.15 ingredientCommand Component
+
+   2.16 Statistics
+
+3. Implementation
+
+4. Documentation
+
+5. Testing
+
+6. Dev Ops
 
 Appendix A: Product Scope
 
@@ -183,7 +211,7 @@ the `Ui` also consist of templates for the different sections of the program, su
 The `Ui` class consists of methods that outputs messages to the user as a response when the user enters a certain command
 
 - reads and returns the user input by using `scanner.nextLine()`, where `scanner` is a `java.util.Scanner` Object
-- allows for user/app dialogs, by using the methods such as `showDialogAddingExpired()` , used when the user tries to add an expired ingredient. Namely, the user is prompted if he whishes to continue with adding an expired Ingredient, and upon receiving the user response, by using the `readCommand()` method, a suitable response is printed on the console
+- allows for user/app dialogs, by using the methods such as `showDialogAddingExpired()` , used when the user tries to add an expired ingredient. Namely, the user is prompted if he wishes to continue with adding an expired Ingredient, and upon receiving the user response, by using the `readCommand()` method, a suitable response is printed on the console
 - outputs messages to the user as a response such as `showRemovedIngredient(String,Int)` and `showAddOrder(String,Int)`, etc
 - consist of diagrams of the different templates
 
@@ -324,8 +352,6 @@ Below is a table of the methods implemented in this class.
 | sortByExpiryDate(): Ingredient Object                        | Sorts the Ingredient lists accordingly by a descending amount |
 | removeEntry(Ingredient Object):  Boolean                     | Looks for the queried Ingredient in the list and remove the amount that we want to use.<br />True:  Enough amount of the queried ingredient<br />False: Not enough amount  of the queriedingredient |
 
-
-
 ##### 2.6.2 OrderList
 
 API: `OrderList.java` 
@@ -362,8 +388,6 @@ Below is a table of the methods implemented in this class.
 | addOrderDish(int, Dishes): void      | add dishes to the order in the orderList                     |
 | addOrderDish(int, Dishes, int): void | add dishes with amount to the order in the orderList         |
 | findDishesAmont(int, Dishes): int    | find dishes amount in the order among the orderList          |
-
-
 
 ##### 2.6.3 DishList
 
@@ -409,7 +433,7 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class
 
 ![dishes](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishes.PNG)
 
-**<u>Dish Class</u>**
+##### **2.8.1 Dish Class**
 
 This class holds the name of the dish as well the ingredients that are associated to that specific dish. 
 
@@ -449,7 +473,7 @@ AddDishCommand, AddIngredient, DeleteDishCommand, ListDishCommand, ResetDishComm
   
 - **<u>AddIngredient</u>**
 
-  user intends to add an ingredient to a certain dish in dishList. this command takes in a description which is the ingredient name, amount and index. thus user enters `ingredient rice 100 1` which denotes adding an ingredient called rice with a amount of 100g to the index of the dish. in this case the index is 1. this command will then call the method`addIngredient` from the Dish class. in this method, it will iterate through the ingredient list to check for duplicates. if there are duplicates, same name and same amount, notify the user that the ingredient already exist. if the name of the ingredient is the same but amount is different, it only change the amount to the new amount. 
+  user intends to add an ingredient to a certain dish in dishList. this command takes in a description which is the ingredient name, amount and index. thus user enters `ingredient rice 100 1` which denotes adding an ingredient called rice with a amount of 100g to the index of the dish. in this case the index is 1. this command will then call the method`addIngredient` from the Dish class. in this method, it will iterate through the ingredient list to check for duplicates. if there are duplicates, same name and same amount, notify the user that the ingredient already exist. if the name of the ingredient is the same but amount is different, it only change the amount to the new amount. 
 
   if any of the description is empty, an exception will be thrown to inform the user. 
 
@@ -469,13 +493,13 @@ AddDishCommand, AddIngredient, DeleteDishCommand, ListDishCommand, ResetDishComm
   
 - **<u>FindDishCommand</u>**
 
-  user intends to find a dish in the dishList by keyword. user enters `find rice`, which denotes to list all the dishes which has the string rice in the name. this command takes in a String keyword and it will iterate through the dishList to find all the dishes that contain the keyword given by user. 
+  user intends to find a dish in the dishList by keyword. user enters `find rice`, which denotes to list all the dishes which has the string rice in the name. this command takes in a String keyword and it will iterate through the dishList to find all the dishes that contain the keyword given by user. 
 
   it will then print out the dish as well as the ingredient list of the dish to the user.
 
 - **<u>ChangeDishCommand</u>**
 
-  user intends to change the name of the dish. user needs to enter `change 1 chicken noodle` which denotes changing name if dish at index 1 to chicken noodle. this command takes in an integer index and string which is the new dish name. it will then change the name of the dish in dishList by the index to the new name.
+  user intends to change the name of the dish. user needs to enter `change 1 chicken noodle` which denotes changing name if dish at index 1 to chicken noodle. this command takes in an integer index and string which is the new dish name. it will then change the name of the dish in dishList by the index to the new name.
 
 ![dishesCommand](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishesCommand.PNG)
 
