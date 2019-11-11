@@ -17,7 +17,7 @@ Chef Duke is targeted towards restaurant chefs who wants to be able to consolida
 
 5. run the command `java -jar v1.3` , application will then be executed 
 
-   ![UI]( https://github.com/AY1920S1-CS2113-T14-2/main1/blob/master/docs/images/Ui.png )
+   ![](C:\Users\s1014\Desktop\local_clone\docs\images\Ui.png)
 
 6. Type some commands and press ENTER to execute
 
@@ -973,7 +973,7 @@ Index | Keyword  | Usage | Description
 
 
 
-# 5. FAQ
+## 5. FAQ
 
 **Q: how do I transfer data to another computer?** 
 

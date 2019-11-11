@@ -956,3 +956,4 @@ Removing an ingredient from the Fridge
    3. Test case 2: `change 1`
 
       Expected: no changes to the list. program prints message to user asking to enter a valid index/description
+
