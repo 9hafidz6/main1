@@ -1,11 +1,11 @@
 package duke.command.ingredientCommand;
 
 import duke.command.Command;
-import duke.dish.DishList;
+import duke.list.DishList;
 import duke.exception.DukeException;
 import duke.fridge.Fridge;
 import duke.ingredient.Ingredient;
-import duke.order.OrderList;
+import duke.list.OrderList;
 import duke.storage.FridgeStorage;
 import duke.storage.OrderStorage;
 import duke.storage.RecipeStorage;
@@ -31,12 +31,16 @@ public class AddCommand extends Command {
      * @param ingredient the ingredient to be added, specified by the name, amount and date
      */
     public AddCommand(Ingredient ingredient) {
+        assert ingredient != null;
         this.ingredient = ingredient;
     }
 
     @Override
     public void execute(Fridge fridge, DishList dishList, OrderList orderList, Ui ui, FridgeStorage fridgeStorage,
                         OrderStorage orderStorage, RecipeStorage rs) throws DukeException {
+        assert fridge != null;
+        assert fridgeStorage != null;
+        assert ui != null;
         ui.showLine();
         if (ingredient.isExpired()) {
             ui.showDialogAddingExpired();

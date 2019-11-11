@@ -2,9 +2,8 @@
 
 By: `Team CS213-T14-2`       Since: `Oct 2019`
 
-
-
 [TOC]
+
 ### 1. Setting Up
 
 - see the Guide [Here]() 
@@ -78,12 +77,15 @@ the `Ui` also consist of templates for the different sections of the program, su
 
 ```
          _________________________________________________________________________________________
-         Continue by adding, removing or using an ingredient
+         Continue by adding, removing or using an ingredient(using its index number).
          Template:
          _________________________________________________________________________________________
          add <Ingredient name> <amount> <expiry date: DD/MM/YYYY>
          remove <ingredient number>
          use <ingredient name> <amount> *always use most recently expiring ingredients 			 first, to prevent food waste!*
+         To change amount, changeamount <Ingredient's Index> <New amount>
+	 	 To change name, changename <Ingredient's Index> <New name>
+	 	 To find an ingredient, find <Ingredient name>
 ```
 
 <u>Order</u>
@@ -121,34 +123,36 @@ the `Ui` also consist of templates for the different sections of the program, su
 The `Ui` class consists of methods that outputs messages to the user as a response when the user enters a certain command
 
 - reads and returns the user input by using `scanner.nextLine()`, where `scanner` is a `java.util.Scanner` Object
-- allows for user/app dialogs, by using the methods such as `showDialogAddingExpired()` , used when the user tries to add an expired ingredient. Namely, the user is prompted if he wishes to continue with adding an expired Ingredient, and upon receiving the user response, by using the `readCommand()` method, a suitable response is printed on the console
+- allows for user/app dialogs, by using the methods such as `showDialogAddingExpired()` , used when the user tries to add an expired ingredient. Namely, the user is prompted if he whishes to continue with adding an expired Ingredient, and upon receiving the user response, by using the `readCommand()` method, a suitable response is printed on the console
 - outputs messages to the user as a response such as `showRemovedIngredient(String,Int)` and `showAddOrder(String,Int)`, etc
 - consist of diagrams of the different templates
 
 #### 2.3 Command Component
 
-API: `Command*.java`
+![Command]( https://github.com/AY1920S1-CS2113-T14-2/main1/blob/master/docs/images/Command.png )
 
-In the project, it has three types of commands: Ingredient Command, Dishes Command, Order Command. The three types of commands are packaged separately.
+Figure. Structure of the Command Component
 
-The Command class is used as an abstract class for other classes, its method `execute` is also declared as an abstract method. that is used by the following classes 
+API: `Command.java`
 
-- DishCommand
+`Duke` uses the `Parser` class to parse the user input and retrieves the useful information contained in the user input, and call a specific `Command` to be executed. The command execution may affect the content of `OrderList`, `Fridge`, `DishList` or `TodayTodoList`,  and their correspinding storages. The command execution may also show the user the respond to the query, or exit the program.
+
+In `Command` Component, there are three types of commands: `Ingredient Command`, `Dishes Command`, `Order Command`, which are packaged separately, as commands in the same package may share same list of things and storage. The three packages and the classes in them are listed as below:
+
+- dishesCommand
   - AddDishCommand
   - DeleteDishCommand
   - ListDishCommand
-  - FindDishCommand
-  - ChangeDishCommand
-  - ResetCommand
+  - InitCommand
   - AddIngredient
-- OrderCommand
+- orderCommand
   - AddOrderCommand
-  - AlterOrderCommand
-  - DeleteOrderCommand
+  - AlterDateCommand
+  - CancelOrderCommand
   - DoneOrderCommand
-  - ListOrderCommand
   - InitOrderListCommand
-- IngredientCommand
+  - ListOrderCommand
+- ingredientCommand
   - AddCommand
   - DeleteCommand
   - FindIngredientCommand
@@ -156,11 +160,10 @@ The Command class is used as an abstract class for other classes, its method `ex
   - ListCommand
   - RemoveAllExpired
   - UseCommand
-  - ViewCommand
-- ViewTodoListCommand
-- ExitCommand
+  - ChangeAmountCommand
+  - ChangeNameCommand
 
-each of the above class has its own implementation of the `execute` method
+The `Command` class is used as an abstract class for other command classes, its method `execute` is also declared as an abstract method, as shown in the figure above. Any other command classes all inherit from `Command` class and override the implementation of the `execute` method. 
 
 #### 2.4 Parser Component
 
@@ -197,19 +200,37 @@ Figure. Structure of the Storage Component
 
 API: `Storage.java` 
 
-The `Storage` component, consists of `Storage.java`, `RecipeStorage.java`, `OrderStorage.java` and `FridgeStorage.java`. `Storage` is modelled as an abstract class,  with `RecipeStorage`, `OrderStorage` and `FridgeStorage` inheriting from it, as shown in the figure above. 
+This component handles storing data and reading it from text files on the hard disc. Upon creation, instances of its subtypes get linked to a *.txt* file passed as an argument in the constructor (by specifying its file path). Subsequently, this specific text file is used for loading and storing data.
 
-The `Storage` component, 
+ `Storage.java`  is modelled as a *generic, abstract* component, used as a base for the `FridgeStorage.java` , `OrderStorage.java` and `RecipeStorage.java`, each one having their own implementation of the *abstract* method `generate()`, that creates and returns a `GenericList` from the entries stored in the .txt file liked to them. 
 
-- can store `ingredient` in the fridge (API: `FridgeStorage.java`) with a certain format, by storing it into and reading it back from the `fridge.txt` file stored on the hard disc. The `IngredientList` as a `GenericList` of ingredients also changes dynamically with the program execution. The format print in file follows `ingredient_name|ingredient_amount|ingredient_expiry date` . See below example:
+This component  allows for storing entries in a certain format, by using the `printInFile()` methods of  these `Printable` entries. Some examples of the data to be stored, are dishes in the dish list, ingredients that are already in the fridge, recipes in the Recipe book and anything else that needs to be saved on the hard disk and available again upon rebooting the program.
 
-- ```
-  milk|3|09/09/2019
-  cheese|4|12/12/2019
-  rice|50|12/12/2019
-  ```
+The dynamic change in the text file contents during execution, is handled primarily by the `update()` method. Calling this method results in updating the content in the linked text file accordingly to the entries in the `GenericList` contained in, and used by that component.
 
-- can store `orders` in the order list (API: `OrderStorage.java`) in a certain format, by storing it into and reading it back from the `order.txt` file stored on the hard disc. The `OrderList` as a `GenericList` of orders also changes dynamically with the program execution.The format print in file follows  `order_status|serving_date|D|dish_name|dish_amount|D|dish_name|dish_amount|...` , where status refers to `done(1)`/`undone(0)`, and `D` seperates each ordered dishes with its amount. See below example:
+The program can `load` or `generate` an entry from the storage, and offers the methods to `changeContent(int index)`,  `addInFile(String data)` and `removeFromFile(int index)`.
+
+##### 2.5.2 FridgeStorage
+
+API: `FridgeStorage.java` 
+
+A subclass of  `Storage.java`, used for storing and loading `Ingredient`s from the `Fridge`. It contains an `IngredientList` , as a `GenericList` of  `Ingredient`s, to keep track of the entries/ingredients being stored, loaded, and  dynamically changed during the program execution. The Ingredients are saved by using the format specified by their `printInFile()` method. The text file linked to this component is *"fridge.txt"*.
+
+The format print in file follows `ingredient_name|ingredient_amount|ingredient_expiry date` . See the example below:
+
+```
+milk|3|09/09/2019
+cheese|4|12/12/2019
+rice|50|12/12/2019
+```
+
+Calling the `load()` method on the text file above, would result in an `IngredientList` containing the  four ingredients with their respective amounts and expiry dates.
+
+##### 2.5.3 OrderStorage
+
+API: `OrderStorage.java`
+
+A subclass of  `Storage.java`, that can store `orders` in the order list in a certain format, by storing it into and reading it back from the `order.txt` file stored on the hard disc. The `OrderList` as a `GenericList` of orders also changes dynamically with the program execution.The format print in file follows  `order_status|serving_date|D|dish_name|dish_amount|D|dish_name|dish_amount|...` , where status refers to `done(1)`/`undone(0)`, and `D` seperates each ordered dishes with its amount. See example below:
 
 - ```
   1|02/11/2019|D|fish|1|D|chili crab|1|D|rice|2
@@ -217,15 +238,19 @@ The `Storage` component,
   0|11/11/2019|D|cereal shrimp|1|D|soup|4
   ```
 
-- can store `dishes` in the recipebook (API: `RecipeStorage.java`) in a certain format, by storing it into and reading it back from the `recipebook.txt` file stored on the hard disc. The `DishList` as a `GenericList` of dishes also changes dynamically with the program execution. The format print in file follows:
+##### 2.5.4 OrderStorage
+
+API: `RecipeStorage.java`
+
+A subclass of  `Storage.java`, that can store `dishes` in the recipebook in a certain format, by storing it into and reading it back from the `recipebook.txt` file stored on the hard disc. The `DishList` as a `GenericList` of dishes also changes dynamically with the program execution. The format print in file follows:
 
   ```
   ???? I don't know the output
   ```
-  
-##### 2.5.2 Printable
 
-![Printable](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/PrintableUML.png)
+##### 2.5.5 Printable
+
+![Printable](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/Printable.png)
 
 Figure. Structure of Printable
 
@@ -233,29 +258,30 @@ API: `Printable.java`
 
 It models a *public* *Interface*, implemented by all the classes that have the feature to print their representation in a file. 
 
-Offers one abstract method `printInFile()` whose implementation should indicate the format of printing the representation of the specific object calling it. A UML Class Diagram is shown below.
+Offers one abstract method `printInFile()` whose implementation should indicate the format of printing the representation of the specific object calling it. A UML Class Diagram is shown above.
 
-#### 2.6 GenericList
+#### 2.6 List Component
+
+![GenericList](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/GenericListUML.png)
+
+Figure. Structure of the List Component
 
 API: `GenericList.java` 
 
-This *generic, abstract* class allows for the creation of different types of lists, and basic list entry manipulations. It is extended by multiple classes, including `IngredientsList.java`, `OrderList.java` and `DishList.java`. All of these classes inherit the basic methods from the Generic List and extend it with their specific methods, eg.  `allUndoneOrders()` from`OrderList.java`, or `changeAmount()` from `IngredientsList.java`. A UML Class Diagram is shown below.
-
-![GenericList](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/GenericListUML.png)
+This *generic, abstract* class `GenericList.java` allows for the creation of different types of lists, and basic list entry manipulations. It is extended by multiple classes, including `IngredientsList.java`, `OrderList.java` and `DishList.java`. The three classes inherit the basic methods from the `GenericList` class and extend it with their own specific methods (e.g. `getAllUndoneOrders()` in`OrderList` class,  `changeAmount()` in `IngredientsList` class), as shown in the UML Class Diagram above.
 
 ##### 2.6.1 IngredientList
 
 API: `IngredientList.java` 
 
-A child class of `GenericList` , using the `Ingredient` as a generic type. Inherits and further extends the attributes and methods of this superclass. 
+Child class of `GenericList` , using the `Ingredient` as a generic type. Inherits and further extends the attributes and methods of this superclass. 
 
 Below is a table of the methods implemented in this class.
 
-| Constructor                                       | Description                                               |
-| ------------------------------------------------- | --------------------------------------------------------- |
-| IngredientsList(List<Ingredient> ingredientsList) | Initializes the IngredientsList as a new List<Ingredient> |
-
-
+| Constructor                                        | Description                                                |
+| -------------------------------------------------- | ---------------------------------------------------------- |
+| IngredientsList(List\<Ingredient> ingredientsList) | Initializes the IngredientsList as a new List\<Ingredient> |
+| IngredientsList()                                  | Initializes the IngredientsList as an empty list           |
 
 | Methods                                                      | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -265,43 +291,62 @@ Below is a table of the methods implemented in this class.
 | getNonExpiredEntry(Ingredient ingredient): Ingredient Object | Looks for the queried Ingredient in the list that is not expired and returns it |
 | sortByExpiryDate(): Ingredient Object                        | Sorts the Ingredient lists accordingly by a descending amount |
 | removeEntry(Ingredient Object):  Boolean                     | Looks for the queried Ingredient in the list and remove the amount that we want to use.<br />True:  Enough amount of the queried ingredient<br />False: Not enough amount  of the queriedingredient |
+| toString()                                                   | Generate description of the ingredient list as string        |
 
 ##### 2.6.2 OrderList
 
 API: `OrderList.java` 
 
-A child class of `GenericList` , using the `Order` as a generic type. Inherits and further extends the attributes and methods of this superclass. 
+Child class of `GenericList` , using the `Order` as a generic type. Inherits and further extends the attributes and methods of this superclass. 
 
-Below is a table of the methods implemented in this class.
+Below are tables of the attributes and the methods implemented in `OrderList` class.
 
-| Atrributes             | Description |
-| ---------------------- | ----------- |
-| orderList: List<Order> |             |
+| Atrributes              | Decription                                                |
+| ----------------------- | --------------------------------------------------------- |
+| orderList: List\<Order> | List of all orders (history, current and future orders)   |
+| todoList: TodayTodoList | Chef's today todo dishes with corresponding dishes amount |
 
+| Constructor             | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| OrderList()             | nitalize the empty order list and the todo list              |
+| OrderList(List\<Order>) | Initalize the order list with a list of orders, update the todo list according to the list of orders given |
 
+| Methods                                 | Description                                        |
+| --------------------------------------- | -------------------------------------------------- |
+| initTodoList()                          | Initialize chef's today Todo list                  |
+| updateTodoList()                        | Update chef's today todoList                       |
+| markOrderDone(int)                      | Mark a order as done                               |
+| findOrderByDate(Date): List\<Order>     | Returns a list of orders on some date              |
+| findOrderByDishes(String): List\<Order> | Returns a list of orders that contains that dishes |
+| getAllUndoneOrders(): List\<Order>      | Return all undone orders                           |
+| getTodayOrders(): List\<Order>          | Return all today's orders                          |
+| getTodayUndoneOrders(): List\<Order>    | Return all today's orders which is undone          |
+| todoListToString(): String              | Return the content of the todo list as string      |
 
-| Constructor            | Description                                        |
-| ---------------------- | -------------------------------------------------- |
-| OrderList()            | initalize the empty orderLIst as a new ArrayList<> |
-| OrderList(List<Order>) | Assign a list of orders to the orderList           |
+###### 2.6.2.1 TodayTodoList
 
+As seen in the attributes of `OrderList` class, there is one attribute `todoList`. Its type is `TodayTodoList`. `TodayTodoList` is not a child of `GenericList` since today todo list varies a lot from day to day. There is no need to read out of and write into the hard disk. The `todoList` will be updated when the program starts, by parsing todo dishes from the order list. The `todoList` may also change with the changes of orders in the order list.
 
+To look into the `TodayTodoList` class, it has private field tasks which consisting of dishes and the amount of the dishes need to be finished today.
 
-| Methods                              | Description                                                  |
-| ------------------------------------ | ------------------------------------------------------------ |
-| size(): int                          | returns the number of orders in the orderList                |
-| markOrderDone(int): void             | mark a order as completed                                    |
-| getOrder(int): Order                 | return the order at the position indexed by number           |
-| getAllUndoneOrders(): List<Order>    | return all undone orders in the orderList                    |
-| getTodayOrders(): List<Order>        | return all today's orders in the orderList                   |
-| getTodayUndoneOrders(): List<Order>  | return all today's orders which is undone in the orderList   |
-| findOrderByDate(String): List<Order> | returns a list of orders on that date                        |
-| findOrderByDishes(Dish): List<Order> | returns a list of orders that contains that dishes           |
-| changeOrderDate(int, String): void   | alter the serving date of the order in the orderList         |
-| getDishesTodayAmount(Dishes): int    | return required amount of the dishes that needed to be done before the end of today |
-| addOrderDish(int, Dishes): void      | add dishes to the order in the orderList                     |
-| addOrderDish(int, Dishes, int): void | add dishes with amount to the order in the orderList         |
-| findDishesAmont(int, Dishes): int    | find dishes amount in the order among the orderList          |
+Below are tables of the attributes and the methods implemented in `TodayTodoList` class.
+
+| Atrributes                   | Decription                                                   |
+| ---------------------------- | ------------------------------------------------------------ |
+| tasks: Map\<String, Integer> | A map with key as dishes name, value as the mount of the dishes need to be done before the end of today |
+
+| Constructor                 | Description                                                  |
+| --------------------------- | ------------------------------------------------------------ |
+| TodayTodoList()             | Initalize the empty todo list                                |
+| TodayTodoList(List\<Order>) | Initalize the todo list with a list of orders, update the todo list according to the list of orders given |
+
+| Methods                    | Description                                                  |
+| -------------------------- | ------------------------------------------------------------ |
+| addTodo(String, int)       | Add dishes with its amount into the todo list                |
+| deleteTodo(String, int)    | Remove dishes with its amount out of the todo list           |
+| addTodoFromOrder(Order)    | Add all ordered dishes in a new order of today               |
+| deleteTodoFromOrder(Order) | After an order be cancelled or done, remove dishes in the order out of the todo list |
+| toString(): String         | Return the content of the todo list as string                |
 
 ##### 2.6.3 DishList
 
@@ -316,8 +361,6 @@ Below is a table of the methods implemented in this class.
 | DishList(List<Dish>) | assigns a list of dishes to dishList             |
 | DishList()           | assigns an empty ArrayList<>() to dishList       |
 | toString(): String   | returns all the dishes in the dishList in String |
-
-
 
 #### 2.7 Exception Component
 
@@ -347,7 +390,7 @@ The Recipebook contains 2 classes, Dishes Class and DishList Class
 
 ![dishes](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishes.PNG)
 
-##### **2.8.1 Dish Class**
+**<u>Dish Class</u>**
 
 This class holds the name of the dish as well the ingredients that are associated to that specific dish. 
 
@@ -415,8 +458,6 @@ AddDishCommand, AddIngredient, DeleteDishCommand, ListDishCommand, ResetDishComm
 
   user intends to change the name of the dish. user needs to enter `change 1 chicken noodle` which denotes changing name if dish at index 1 to chicken noodle. this command takes in an integer index and string which is the new dish name. it will then change the name of the dish in dishList by the index to the new name.
 
-![dishesCommand](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/dishesCommand.PNG)
-
 **<u>future additions</u>**
 
 - **<u>ChangeIngredientCommand</u>**
@@ -482,7 +523,7 @@ The `Fridge` component allows access and modification of the `Ingredient`s used 
 
 Upon (re)booting the program, the `Fridge` gets initialized with the current `IngredientList` (the attribute `entries`) stored in the `FridgeStorage`, passed as a parameter to it's main constructor. In all subsequent Ingredient manipulations, these two components are accessing/modifying the same `IngredientList`, meaning modifications made in the `Fridge`, are immediately seen in the `entries` attribute (an inherited `GenericList`) of the `FridgeStorage` , therefore, consistency among these classes is guaranteed. 
 
-![Fridge](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/fridgeUML1.png)
+![Fridge](https://github.com/AY1920S1-CS2113-T14-2/main/blob/master/docs/images/fridge.png)
 
 **<u>Ingredient Class</u>**
 
@@ -536,12 +577,7 @@ The `ingredientCommand` classes all inherit from the `Command` class. They all h
 - **ChangeAmountCommand**: This command is used to change the amount of an `Ingredient` given the index number of the `Ingredient`.
 - **ChangeNameCommand**: This command is used to change the name of an `Ingredient` given the index number of the `Ingredient`.
 
-
-### 3. Implementation
-
-### 4. Documentation
-
-### 5. Testing
+### 3. Testing
 
 
 - There are two ways to run our tests.
@@ -556,11 +592,6 @@ The `ingredientCommand` classes all inherit from the `Command` class. They all h
 - Open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
 
 We provide `JUnit` tests to test individual methods in the `Dish` and `Fridge` component, provided in the `DishTest.java` and `FridgeTest.java`
-
-
-### 6. Dev Ops 
-
-
 
 ### Appendix A: Product Scope
 
@@ -713,11 +744,11 @@ Target user profile: Restaurant Chef
 
 
 
-**Use case: Find a ingredient by searching for keyword**
+**Use case: Find an ingredient by searching for keyword**
 
-1. User requests to find tasks with the given keyword
+1. User requests to find an ingredient with the given keyword
 
-2. Program loads up and shows ingredient with the given keyword
+2. Program loads up and shows a lists of ingredients(that fits the keyword), with their attributes
 
 **Extensions**
 
@@ -741,7 +772,7 @@ Target user profile: Restaurant Chef
 4. should be easy to use for users with basic knowledge of command line interface
 5. should be able to handle large amounts of data without displaying any slowdown in application performance 
 
-### Appendix F: Instruction for Manual Testing 
+### Appendix E: Instruction for Manual Testing 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 2. Download the latest Duke.jar [here](https://github.com/AY1920S1-CS2113-T14-2/main/releases).
@@ -789,8 +820,6 @@ in the main page, there are several actions for the user:
 
       Expected: output a message to user that the description of add cannot be empty
 
-
-
 #### E3. Removing an ingredient
 
 Removing an ingredient from the Fridge
@@ -837,27 +866,73 @@ Using an ingredient from the Fridge
 
 #### E7. Finding an ingredient
 
+Finding an ingredient in the Fridge
+
+1. Prerequisite: user must be in `b` option of the main menu. List all ingredients in the `Fridge` by typing `show`. Assuming there is only **beef** and **chicken** in the `Fridge`.
+
+   Test case 1: `find beef` 
+
+   Expected: Find and list all ingredients that have the keyword `beef` to the user, regardless of their amount or expiry date
+
+​	   Test case 2: `find cockroach`
+
+​	   Expected: Ingredient is not found and program outputs `No such ingredient found!`
+
+​	   Test case 3: `find be ef`
+
+​	   Expected: Program outputs to user the proper syntax to use the command.
+
 #### E8. Listing ingredients that expired today
 
-1. Adding an ingredient to the List
+Listing all ingredients in the `Fridge` that expires today
+
+1. Prerequisite: user must be in `b` option of the main menu. Assuming there is only **beef** and **chicken** in the `Fridge`. However, only the **chicken** expires today.
+
+   Test case 1: `listtoday` 
+
+   Expected: Find and list all ingredients in the `Fridge` that expires today, which is the **chicken**.
+
+   Test case 2: `list today`
+
+   Expected: Program outputs to user the proper syntax to use the command
 
 #### E9. Changing ingredient name
 
-1. Adding an ingredient to the List
+Changing the name of an ingredient in the `Fridge`
+
+1. Prerequisite: user must be in `b` option of the main menu. List all ingredients in the `Fridge` by typing `show`. Assuming there is only **beef** and **chicken** in the `Fridge`, with index of 1 and 2 respectively.
+
+   Test case 1: `changename 1 pork` 
+
+   Expected: Changes the **beef** to **pork** and output its new name, amount and expiry date to the user.
+
+​	   Test case 2: `changename 3 pork`
+
+​	   Expected: User is prompted by the program to enter a valid range of ingredient index number,                                                                                        	   depending on the `IngredienstLists` size.
+
+​	   Test case 3: `changename chicken pork`
+
+​	   Expected: Program outputs to user the proper syntax to use the command.
 
 #### E10. Changing ingredient amount
 
-1. Adding an ingredient to the List
+Changing the amount of an ingredient in the `Fridge`
 
-#### E11. Adding an order
+1. Prerequisite: user must be in `b` option of the main menu. List all ingredients in the `Fridge` by typing `show`. Assuming there is only **30 beef** and **20 chicken** in the `Fridge`, with index of 1 and 2 respectively.
 
-#### E12. Marking order as done
+   Test case 1: `changeamount 1 20` 
 
-#### E13. Altering order
+   Expected: Changes the amount of **beef** from 30 to 20 and output its name, new amount and expiry date to the user.
 
-#### E14. Removing order
+​	   Test case 2: `changeamount 3 20`
 
-#### E15. Adding a dish
+​	   Expected: User is prompted by the program to enter a valid range of ingredient index number,                                                                                        	   depending on the `IngredienstLists` size.
+
+​	   Test case 3: `changeamount chicken 7`
+
+​	   Expected: Program outputs to user the proper syntax to use the command.
+
+#### E11. Adding a dish
 
 1. adding a dish to the dishList
 
@@ -875,7 +950,7 @@ Using an ingredient from the Fridge
 
       Expected: output message to user that the description cannot be empty
 
-#### E16. Removing a dish
+#### E12. Removing a dish
 
 1. removing a dish from the dishList
 
@@ -897,7 +972,7 @@ Using an ingredient from the Fridge
 
          Expected: no dish is deleted. outputs to the user that the dish does not exist 
 
-#### E17. Adding an ingredient to a dish
+#### E13. Adding an ingredient to a dish
 
 1. associating an ingredient to a dish in the dishList	
 
@@ -915,7 +990,7 @@ Using an ingredient from the Fridge
 
       Expected: no ingredient is added to a dish. outputs message to user that index/amount needs to be valid
 
-#### E18. Finding a dish
+#### E14. Finding a dish
 
 1. finding a dish in list given a keyword
 
@@ -934,7 +1009,7 @@ Using an ingredient from the Fridge
    
    Expected: deletes the first dish in the list, 
 
-#### E19. Changing name of a dish
+#### E15. Changing name of a dish
 
 1. changing the name of a dish in list
 
@@ -947,4 +1022,3 @@ Using an ingredient from the Fridge
    3. Test case 2: `change 1`
 
       Expected: no changes to the list. program prints message to user asking to enter a valid index/description
-
