@@ -108,7 +108,7 @@ the `Ui` also consist of templates for the different sections of the program, su
 <u>Dish</u>
 
 ```
-         _________________________________________________________________________________________
+_________________________________________________________________________________________
          Continue by adding, removing, listing, adding ingredient and initializing
          Template:       _________________________________________________________________________________________
          add <dish name>

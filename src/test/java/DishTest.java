@@ -1,7 +1,7 @@
 import duke.command.Command;
 import duke.command.dishesCommand.AddDishCommand;
 import duke.dish.Dish;
-import duke.dish.DishList;
+import duke.list.DishList;
 import duke.exception.DukeException;
 import duke.ingredient.Ingredient;
 import org.junit.jupiter.api.Test;
